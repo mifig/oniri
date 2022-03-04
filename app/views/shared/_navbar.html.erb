@@ -1,22 +1,34 @@
-<div class="bottom-fixed-div">
-  <%= link_to "add a dream", "#", class: "big-white-link" %>
-</div>
+<% if user_signed_in? %>
+  <div class="bottom-lower-fixed-div">
+    <%= link_to "add a dream", "#", class: "big-white-link" %>
+  </div>
 
-<div class="navbar-bt">
-  <%= link_to "#" do %>
-    <i class='fas fa-chart-line'></i>
-  <% end %>
+  <div class="navbar-bt">
+    <%= link_to "#" do %>
+      <i class='fas fa-chart-line'></i>
+    <% end %>
 
-  <%= link_to "#" do %>
-    <i class='fas fa-home'></i>
-  <% end %>
+    <%= link_to "#" do %>
+      <i class='fas fa-home'></i>
+    <% end %>
 
-  <%= link_to "+", "#", class: "add-btn box-white-shadow" %>
-  
-  <%= link_to "#" do %>
-    <i class='fas fa-tags'></i>
-  <% end %>
-  <%= link_to "#" do %>
-    <i class='fas fa-user'></i>
-  <% end %>
-</div>
+    <%= link_to "+", "#", class: "add-btn box-white-shadow" %>
+    
+    <%= link_to "#" do %>
+      <i class='fas fa-tags'></i>
+    <% end %>
+    <%= link_to "#" do %>
+      <i class='fas fa-user'></i>
+    <% end %>
+  </div>
+<% elsif controller_name == "pages" && action_name == "home" %>
+
+  <div class="bottom-fixed-div">
+    <p class="big-white-link">bring your dreams to consciousness</p>
+  </div>
+
+  <div class="navbar-bt justify-content-center">
+    <%= link_to "log-in", new_user_session_path, class: "login-btn box-white-shadow" %>
+  </div>
+<% end %>
+

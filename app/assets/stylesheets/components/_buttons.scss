@@ -11,3 +11,40 @@
   line-height: 58px;
   background: white;
 }
+
+.login-btn {
+  border-radius: 40px;
+  text-align: center;
+  text-decoration: none;
+  color: $blue;
+  font-size: 24px;
+  font-weight: lighter;
+  background: white;
+  padding: 8px 24px;
+}
+
+.white-link-btn {
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
+}
+
+.bottom-ontop-abs {
+  position: absolute;
+  right: 32px;
+  bottom: 32px;
+  z-index: 1;
+}
+
+.blue-link-btn {
+  font-size: 14px;
+  color: $blue;
+  text-decoration: none;
+}
+
+.top-abs {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+}
+

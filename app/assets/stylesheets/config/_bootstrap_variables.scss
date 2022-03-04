@@ -23,10 +23,13 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+html {
+  height: 100%;
+}
+
 body {
   background: linear-gradient(180deg, white 26.04%, $blue 91.67%);
   background-repeat: no-repeat;
-  height: 100vh;
 }
 
 h1 {
