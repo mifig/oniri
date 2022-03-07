@@ -8,13 +8,12 @@
   text-shadow: 0px -8px 16px rgba(255, 255, 255, 0.6);
   text-decoration: none;
   color: white;
+  padding: 0px 24px;
 }
 
 .bottom-fixed-div {
   position: absolute;
-  bottom: 200px;
-  display: flex;
-  justify-content: center;
+  bottom: 15vh;
   width: 100vw;
 }
 
@@ -27,7 +26,6 @@
 }
 
 .logo {
-  margin-top: 300px;
   color: white;
   text-shadow: 0px 0px 16px $blue;
   font-size: 60px;
@@ -40,4 +38,11 @@
 
 .white-glow {
   text-shadow: 0px -8px 16px rgba(200, 255, 255, 0.60);
+}
+
+.home-container {
+  justify-content: center;
+  display: flex;
+  height: 85vh;
+  align-items: center;
 }
