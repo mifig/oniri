@@ -1,3 +1,4 @@
 class Label < ApplicationRecord
-  has_and_belongs_to_many :dreams
+  has_many :dream_labels
+  has_many :dreams, through: :dream_labels
 end

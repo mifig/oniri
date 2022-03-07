@@ -15,7 +15,7 @@ class DreamPolicy < ApplicationPolicy
   end
 
   def create?
-    user_is_owner_or_admin?
+    true
   end
 
   def update?

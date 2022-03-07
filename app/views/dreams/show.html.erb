@@ -1,0 +1,7 @@
+<div class="container">
+  <h2><%= @dream.dream_date %></h2>
+  <p><%= @dream.content %></p>
+  <% @dream.labels.each do |label| %>
+    <p><%= label %></p>
+  <% end %>
+</div>

@@ -1,18 +1,14 @@
 <% if user_signed_in? %>
-  <div class="bottom-lower-fixed-div">
-    <%= link_to "add a dream", "#", class: "big-white-link" %>
-  </div>
-
   <div class="navbar-bt">
     <%= link_to "#" do %>
       <i class='fas fa-chart-line'></i>
     <% end %>
 
-    <%= link_to "#" do %>
+    <%= link_to :root do %>
       <i class='fas fa-home'></i>
     <% end %>
 
-    <%= link_to "+", "#", class: "add-btn box-white-shadow" %>
+    <%= link_to "+", new_dream_path, class: "add-btn box-white-shadow" %>
     
     <%= link_to "#" do %>
       <i class='fas fa-tags'></i>

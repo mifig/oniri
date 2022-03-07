@@ -1,0 +1,17 @@
+<div class="container">
+  <%= link_to :back, class: "back-btn top-left" do %>
+    <i class='fas fa-arrow-left'></i>
+  <% end %>
+  <%= simple_form_for [@label, @dream] do |f| %>
+    <%= f.input :dream_date,  
+                as: :string,
+                label: false,
+                input_html: { 
+                  class: "datepicker date-input"
+                } %>
+    <%= f.input :content %>
+    <%= f.association :significance, as: :radio_buttons, label_method: :sign_type %>
+    <%= f.association :labels, as: :check_boxes, label_method: :title, include_hidden: false, input_html: { multiple: true } %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

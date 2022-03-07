@@ -6,6 +6,7 @@ class DreamsController < ApplicationController
   end
 
   def show
+    authorize @dream
   end
 
   def new
@@ -16,10 +17,18 @@ class DreamsController < ApplicationController
 
   def create
     @dream = Dream.new(dream_params)
+
+    dream_labels = params[:dream][:label_ids].map do |label_id|
+      label = Label.find(label_id)
+      DreamLabel.create(label: label, dream: @dream)
+    end
+    
+    @dream.dream_labels << dream_labels
+    
     @dream.user = current_user
-
+    
     authorize @dream
-
+    
     if @dream.save
       redirect_to dream_path(@dream)
     else
@@ -39,7 +48,7 @@ class DreamsController < ApplicationController
   private
 
   def dream_params
-    params.require(:dream).permit(:content, :dream_date, :label_id, :significance_id)
+    params.require(:dream).permit(:content, :dream_date, :significance_id, :label_ids)
   end
 
   def set_dream

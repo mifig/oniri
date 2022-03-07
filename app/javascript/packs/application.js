@@ -14,3 +14,11 @@ ActiveStorage.start()
 
 import "controllers"
 import "bootstrap"
+
+// Internal imports:
+import { initFlatpickr } from '../plugins/init_flatpickr';
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your functions here, e.g:
+  initFlatpickr();
+});

@@ -1,9 +1,15 @@
 <div class="container home-container">
   <% if user_signed_in? %>
     <%= link_to "log-out", destroy_user_session_path, method: :delete, class: "blue-link-btn top-abs" %>
+    
+    <div>
+      <h1 class="white-glow">good morning</h1>
+      <h1 class="white-glow"><%= current_user.first_name %></h1>
+    </div>
 
-    <h1 class="welcome-tag white-glow">good morning</h1>
-    <h1 class="white-glow"><%= current_user.first_name %></h1>
+    <div class="bottom-lower-fixed-div">
+      <%= link_to "add a dream", new_dream_path, class: "big-white-link" %>
+    </div>
   <% else %>
     <%# <h1 class="welcome-tag">welcome to</h1> %>
     <h1 class="logo">oniri</h1>
