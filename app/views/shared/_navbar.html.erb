@@ -8,7 +8,11 @@
       <i class='fas fa-home'></i>
     <% end %>
 
-    <%= link_to "+", new_dream_path, class: "add-btn box-white-shadow" %>
+    <% if controller_name == "dreams" && action_name == "new" %>
+      <button class="save-btn box-white-shadow" data-action="click->new-dream#sendForm">save</button>
+    <% else %>
+      <%= link_to "+", new_dream_path, class: "add-btn box-white-shadow" %>
+    <% end %>
     
     <%= link_to "#" do %>
       <i class='fas fa-tags'></i>

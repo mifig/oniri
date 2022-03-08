@@ -1,6 +1,7 @@
 class CreateDreamsAndLabels < ActiveRecord::Migration[6.1]
   def change
     create_table :dreams do |t|
+      t.string :title
       t.string :content
       t.references :user, null: false, foreign_key: true
       t.references :significance, null: false, foreign_key: true
@@ -15,9 +16,9 @@ class CreateDreamsAndLabels < ActiveRecord::Migration[6.1]
       t.timestamps
     end
 
-    create_table :dreams_labels, id: false do |t|
-      t.belongs_to :dream
-      t.belongs_to :label
+    create_table :dream_labels do |t|
+      t.references :dream, null: false, foreign_key: true
+      t.references :label, null: false, foreign_key: true
     end
   end
 end

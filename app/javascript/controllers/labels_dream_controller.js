@@ -10,9 +10,10 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "output" ]
+  static targets = [ "addlabel" ]
 
-  connect() {
-    this.outputTarget.textContent = 'Hello, Stimulus!'
+  showLabels() {
+    console.log(this.addlabelTarget);
+    this.addlabelTarget.classList.toggle("d-none")
   }
 }

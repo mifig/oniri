@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body data-controller="new-dream">
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= render 'shared/navbar' %>

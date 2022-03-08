@@ -10,32 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_07_170848) do
+ActiveRecord::Schema.define(version: 2022_03_07_125817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "dream_labels", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "dream_id", null: false
+    t.bigint "label_id", null: false
+    t.index ["dream_id"], name: "index_dream_labels_on_dream_id"
+    t.index ["label_id"], name: "index_dream_labels_on_label_id"
   end
 
   create_table "dreams", force: :cascade do |t|
+    t.string "title"
     t.string "content"
     t.bigint "user_id", null: false
     t.bigint "significance_id", null: false
-    t.datetime "dream_date", default: "2022-03-07 19:03:06"
+    t.datetime "dream_date", default: "2022-03-08 15:16:03"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["significance_id"], name: "index_dreams_on_significance_id"
     t.index ["user_id"], name: "index_dreams_on_user_id"
-  end
-
-  create_table "dreams_labels", id: false, force: :cascade do |t|
-    t.bigint "dream_id"
-    t.bigint "label_id"
-    t.index ["dream_id"], name: "index_dreams_labels_on_dream_id"
-    t.index ["label_id"], name: "index_dreams_labels_on_label_id"
   end
 
   create_table "labels", force: :cascade do |t|
@@ -67,6 +63,8 @@ ActiveRecord::Schema.define(version: 2022_03_07_170848) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "dream_labels", "dreams"
+  add_foreign_key "dream_labels", "labels"
   add_foreign_key "dreams", "significances"
   add_foreign_key "dreams", "users"
 end
