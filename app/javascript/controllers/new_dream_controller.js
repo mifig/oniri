@@ -9,8 +9,16 @@
 
 import { Controller } from "stimulus"
 
+
 export default class extends Controller {
   static targets = [ "form" ]
+
+  connect() {
+    if (document.querySelector(".invalid-feedback")) {
+      document.querySelector(".add-btn").remove()
+      document.querySelector(".save-btn").classList.remove("d-none")
+    }
+  }
 
   sendForm() {
     this.formTarget.submit();

@@ -41,3 +41,33 @@
   height: 85vh;
   align-items: center;
 }
+
+.gray-color {
+  color: #636363;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-justify {
+  text-align: justify;
+}
+
+.small-font {
+  font-size: 12px;
+}
+
+.labels {
+  background: $blue;
+  color: white;
+  border-radius: 10px;
+  padding: 3px 6px;
+  font-size: 12px;
+  margin-right: 8px;
+}
+
+.labels-position {
+  position: absolute;
+  bottom: 30vh;
+}

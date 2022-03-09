@@ -10,22 +10,21 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "addlabel" ]
+  static targets = [ "addsign" ]
 
-  showLabels() {
-    // console.log(this.addlabelTarget);
-    // this.addlabelTarget.classList.toggle("d-none-transition")
-    let label = this.addlabelTarget;
+  showSigns() {
+    console.log("Hello from signs")
+    let sign = this.addsignTarget;
 
-    if (label.classList.contains('d-none')) {
-      label.classList.remove('d-none');
+    if (sign.classList.contains('d-none')) {
+      sign.classList.remove('d-none');
       setTimeout(function () {
-        label.classList.remove('visuallyhidden');
+        sign.classList.remove('visuallyhidden');
       }, 0);
     } else {
-      label.classList.add('visuallyhidden');    
-      label.addEventListener('transitionend', function(e) {
-        label.classList.add('d-none');
+      sign.classList.add('visuallyhidden');    
+      sign.addEventListener('transitionend', function(e) {
+        sign.classList.add('d-none');
       }, {
         capture: false,
         once: true,

@@ -1,9 +1,22 @@
 <div class="container">
-  <h2><%= @dream.dream_date %></h2>
-  <p><%= @dream.title %></p>
-  <p><%= @dream.content %></p>
-  <p><%= @dream.significance.sign_type %></p>
-  <% @dream.labels.each do |label| %>
-    <p><%= label.title %></p>
-  <% end %>
+  <div class="row">
+    <div class="col-1" style="padding: 16px 0px 16px 16px">
+      <%= link_to :back, class: "back-btn" do %>
+        <i class='fas fa-arrow-left'></i>
+      <% end %>
+    </div>
+    <div class="col-11">
+      <h2 class="date-input"><%= @dream.dream_date.strftime("%d %b %Y,%l:%M %p") %></h2>
+    </div>
+  </div>
+  <div class="px-4">
+    <p class="gray-color text-align-center"><%= @dream.title %></p>
+    <p class="mt-5 small-font"><%= @dream.significance.sign_type %></p>
+    <p class="text-align-justify"><%= @dream.content %></p>
+    <div class="d-flex labels-position">
+      <% @dream.labels.each do |label| %>
+        <p class="labels"><%= label.title %></p>
+      <% end %>
+    </div>
+  </div>
 </div>
