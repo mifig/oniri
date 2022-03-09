@@ -53,8 +53,19 @@
   background: white;
   border: none;
   transition: ease 0.5s;
-  display: block;
+  display: flex;
+  flex-direction: column;
   margin-top: 12px;
+  justify-content: space-between;
+
+  fieldset {
+    height: 100px;
+    overflow-y: scroll;
+
+    .form-check-input {
+      position: relative;
+    }
+  }
 }
 
 .visuallyhidden {

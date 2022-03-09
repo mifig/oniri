@@ -22,9 +22,11 @@ class DreamsController < ApplicationController
     authorize @dream
     
     if @dream.save
-      dream_labels = params[:dream][:label_ids].map do |label_id|
-        label = Label.find(label_id)
-        DreamLabel.create(label: label, dream: @dream)
+      if params[:dream][:label_ids]
+        params[:dream][:label_ids].each do |label_id|
+          label = Label.find(label_id)
+          DreamLabel.create(label: label, dream: @dream)
+        end
       end
 
       redirect_to dream_path(@dream)
@@ -34,9 +36,29 @@ class DreamsController < ApplicationController
   end
   
   def edit
+    authorize @dream
   end
 
   def update
+    authorize @dream
+    
+    if @dream.update(dream_params)
+      destroy_labels = @dream.labels.where.not(id: params[:dream][:label_ids])
+      DreamLabel.where(label: destroy_labels, dream: @dream).destroy_all
+      
+      if params[:dream][:label_ids]
+        params[:dream][:label_ids].each do |label_id|
+          label = Label.find(label_id)
+          if !DreamLabel.exists?(label: label, dream: @dream)
+            DreamLabel.create(label: label, dream: @dream)
+          end
+        end
+      end
+
+      redirect_to dream_path(@dream)
+    else
+      render :edit
+    end
   end
 
   def destroy

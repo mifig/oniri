@@ -44,6 +44,7 @@
 
 .gray-color {
   color: #636363;
+  font-weight: bold;
 }
 
 .text-align-center {
@@ -56,6 +57,7 @@
 
 .small-font {
   font-size: 12px;
+  color: gray;
 }
 
 .labels {
@@ -68,6 +70,13 @@
 }
 
 .labels-position {
-  position: absolute;
-  bottom: 30vh;
+  flex-wrap: wrap;
+  margin: 0px 12px;
+  margin-top: 4vh;
+}
+
+.scrolled-text {
+  overflow-y: scroll;
+  height: 40vh;
+  font-size: 14px;
 }

@@ -1,7 +1,7 @@
 class Dream < ApplicationRecord
   belongs_to :user
   belongs_to :significance
-  has_many :dream_labels
+  has_many :dream_labels, dependent: :destroy
   has_many :labels, through: :dream_labels
 
   validates :content, presence: true, length: { minimum: 5 }
