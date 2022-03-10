@@ -6,6 +6,7 @@
   color: #51C4D3;
   text-align: center;
   padding: 0px !important;
+  cursor: pointer;
 }
 
 .form-check-input {
@@ -47,10 +48,13 @@
 }
 
 .label-input {
-  box-shadow: 0 0 16px #51c4d3;
-  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 0px 40px #ffffff;
+  border-radius: 40px;
+  // box-shadow: 0 0 16px #51c4d3;
+  // border-radius: 25px;
+  // background: white;
   padding: 18px 32px;
-  background: white;
   border: none;
   transition: ease 0.5s;
   display: flex;
@@ -61,6 +65,7 @@
   fieldset {
     height: 100px;
     overflow-y: scroll;
+    margin-bottom: 0 !important;
 
     .form-check-input {
       position: relative;
@@ -74,4 +79,30 @@
 
 legend {
   display: none;
+}
+
+.dreams-input {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 0px 40px #ffffff;
+  border-radius: 40px;
+  // box-shadow: 0 0 16px #51c4d3;
+  // border-radius: 25px;
+  // background: white;
+  padding: 18px 32px;
+  border: none;
+  transition: ease 0.5s;
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+  justify-content: space-between;
+
+  fieldset {
+    height: 250px;
+    overflow-y: scroll;
+    margin-bottom: 0 !important;
+
+    .form-check-input {
+      position: relative;
+    }
+  }
 }

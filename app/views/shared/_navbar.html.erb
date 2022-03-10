@@ -12,6 +12,10 @@
       <button class="save-btn box-white-shadow" data-action="click->new-dream#sendForm">save</button>
     <% elsif controller_name == "dreams" && action_name == "show" %>
       <%= link_to "edit", edit_dream_path(@dream), class:"save-btn box-white-shadow" %>
+    <% elsif controller_name == "labels" && action_name == "edit" %>
+      <button class="save-btn box-white-shadow" data-action="click->new-label#sendForm">save</button>
+    <% elsif controller_name == "labels" && action_name == "new" %>
+      <button class="save-btn box-white-shadow" data-action="click->new-label#sendForm">create</button>
     <% elsif controller_name == "dreams" && action_name == "edit" %>
       <button class="save-btn box-white-shadow" data-action="click->new-dream#sendForm">save</button>
     <% else %>

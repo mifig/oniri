@@ -1,5 +1,5 @@
 <div class="container" data-controller="show-labels show-sign">
-  <%= simple_form_for [@label, @dream], data: { new_dream_target: "form" }, method: :put do |f| %>
+  <%= simple_form_for [@user, @label, @dream], data: { new_dream_target: "form" }, method: :put do |f| %>
     <div class="row">
       <div class="col-1" style="padding: 16px 0px 16px 16px">
         <%= link_to :back, class: "back-btn" do %>
@@ -18,8 +18,11 @@
     <div class="px-4" data-controller="sign-dream labels-dream">
       <%= f.input :title, placeholder: "give a title to your dream...", 
                           label: false, 
-                          input_html: { class: "bg-none-input" } %>
-      <div class="d-flex justify-content-between">
+                          input_html: { 
+                            class: "bg-none-input", 
+                            style: "margin-bottom: 1rem; padding: 0px;" 
+                          } %>
+      <div class="d-flex justify-content-between mt-5" style="margin-bottom: 1rem">
         <a class="add-input-btn" data-show-sign-target="sign" data-action="click->sign-dream#showSigns"><i class="fas fa-cog"></i> <%= @dream.significance.sign_type %></a>
         <a class="add-input-btn" data-action="click->labels-dream#showLabels"><i class="fas fa-cog"></i> labels</a>
       </div>
@@ -32,7 +35,8 @@
         </div>
       </div>
       <div class="d-none visuallyhidden label-input" data-labels-dream-target="addlabel">
-        <%= f.association :labels,  label_method: :title, 
+        <%= f.association :labels,  collection: current_user.labels,
+                                    label_method: :title, 
                                     label: false,
                                     legend: false,
                                     as: :check_boxes,
@@ -40,7 +44,7 @@
                                     input_html: { 
                                       multiple: true
                                     } %>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center pt-3">
           <a class="add-input-btn" data-action="click->labels-dream#showLabels click->show-labels#showLabels">save labels</a>
         </div>
       </div>
@@ -52,8 +56,8 @@
     <% end %>
     <div class="d-flex labels-position" data-show-labels-target="labelcontainer">
       <% @dream.labels.each do |label| %>
-        <p class="labels"><%= label.title %></p>
+        <p class="labels" style="background: <%= label.color %>"><%= label.title %></p>
       <% end %>
-    </div>
+    </div> 
   </div>
 </div>

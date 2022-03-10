@@ -10,10 +10,25 @@
     </div>
   </div>
   <div class="px-4 pt-2">
-    <%= simple_form_for @label do |f|%>
-      <%= f.input :title %>
-      <%= f.input :color, input_html: { type: "color" } %>
-      <%= f.button :submit %>
+    <%= simple_form_for @label, data: { new_label_target: "form" }, method: :put do |f|%>
+      <div style="position: relative; margin: 24px 0px 48px 0px;">
+        <%= f.input :title, label: false, 
+                            input_html: { class: "bg-none-input" } %>
+        <%= f.input :color, label: false, 
+                            input_html: { type: "color" },
+                            wrapper_html: { style: "position: absolute;
+                                                    right: 0px;
+                                                    bottom: 6px;
+                                                    margin-bottom: 0 !important;
+                                                    width: 66px;" } %>
+      </div>
+      <div class="dreams-input">
+        <p class="text-align-center">label your dreams</p>
+        <%= f.association :dreams,  as: :check_boxes, 
+                                    include_hidden: false, 
+                                    collection: current_user.dreams %>
+      </div>
+      <%= f.button :submit, type: "hidden" %>
     <% end %>
   </div>
 </div>

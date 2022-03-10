@@ -9,7 +9,8 @@ export default class extends Controller {
     document.querySelectorAll(".check_boxes").forEach( check => {
       if (check.checked) {
         let label = check.parentElement.innerText;
-        this.labelcontainerTarget.insertAdjacentHTML("beforeend",`<p class="labels">${label}</p>` )
+        console.log(check);
+        this.labelcontainerTarget.insertAdjacentHTML("beforeend",`<p class="labels">${label}</p>`)
       } 
     })
   }

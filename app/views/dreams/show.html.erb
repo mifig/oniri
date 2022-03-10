@@ -15,8 +15,11 @@
     <p class="text-align-justify scrolled-text" style="white-space: pre-wrap"><%= @dream.content %></p>
     <div class="d-flex labels-position">
       <% @dream.labels.each do |label| %>
-        <p class="labels"><%= label.title %></p>
+        <p class="labels" style="background: <%= label.color %>"><%= label.title %></p>
       <% end %>
     </div>
+  </div>
+  <div class="d-flex justify-content-center mt-3">
+    <%= link_to "delete dream", dream_path(@dream), method: :delete, style: "color: white", data: { confirm: "Are you sure?" }  %>
   </div>
 </div>

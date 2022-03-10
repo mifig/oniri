@@ -33,6 +33,7 @@
       </div>
       <div class="d-none visuallyhidden label-input" data-labels-dream-target="addlabel">
         <%= f.association :labels,  label_method: :title, 
+                                    collection: current_user.labels,
                                     label: false,
                                     legend: false,
                                     as: :check_boxes,
@@ -40,7 +41,7 @@
                                     input_html: { 
                                       multiple: true
                                     } %>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center pt-3">
           <a class="add-input-btn" data-action="click->labels-dream#showLabels click->show-labels#showLabels">save labels</a>
         </div>
       </div>

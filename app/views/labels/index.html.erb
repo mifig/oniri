@@ -13,7 +13,7 @@
     <% if @labels.exists? %>
       <% @labels.each do |label| %>
         <div class="d-flex justify-content-between px-2 mt-2">
-          <p class="labels index-labels"><%= label.title %></p>
+          <p class="labels index-labels" style="background: <%= label.color %>"><%= label.title %></p>
           <div>
             <%= link_to "edit", edit_label_path(label), style: "padding-right: 8px" %>
             <%= link_to "delete", label_path(label), method: :delete, class: "gray-link" %>

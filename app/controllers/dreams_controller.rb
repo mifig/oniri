@@ -25,7 +25,7 @@ class DreamsController < ApplicationController
       if params[:dream][:label_ids]
         params[:dream][:label_ids].each do |label_id|
           label = Label.find(label_id)
-          DreamLabel.create(label: label, dream: @dream)
+          DreamLabel.create(label: label, dream: @dream, user: current_user)
         end
       end
 
@@ -44,13 +44,13 @@ class DreamsController < ApplicationController
     
     if @dream.update(dream_params)
       destroy_labels = @dream.labels.where.not(id: params[:dream][:label_ids])
-      DreamLabel.where(label: destroy_labels, dream: @dream).destroy_all
+      DreamLabel.where(label: destroy_labels, dream: @dream, user: current_user).destroy_all
       
       if params[:dream][:label_ids]
         params[:dream][:label_ids].each do |label_id|
           label = Label.find(label_id)
-          if !DreamLabel.exists?(label: label, dream: @dream)
-            DreamLabel.create(label: label, dream: @dream)
+          if !DreamLabel.exists?(label: label, dream: @dream, user: current_user)
+            DreamLabel.create(label: label, dream: @dream, user: current_user)
           end
         end
       end
@@ -62,12 +62,19 @@ class DreamsController < ApplicationController
   end
 
   def destroy
+    authorize @dream
+    
+    if @dream.destroy
+      redirect_to :root
+    else
+      render :show
+    end
   end
 
   private
 
   def dream_params
-    params.require(:dream).permit(:title, :content, :dream_date, :significance_id, :label_ids)
+    params.require(:dream).permit(:title, :content, :dream_date, :significance_id, :label_ids, :user_id)
   end
 
   def set_dream

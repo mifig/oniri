@@ -72,6 +72,7 @@
   color: $blue;
   font-size: 14px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .big-white-link {
@@ -93,4 +94,8 @@
   background: white;
   border-radius: 40px;
   padding: 8px 16px;
+}
+
+.delete-red-link {
+  color: #C50000;
 }
