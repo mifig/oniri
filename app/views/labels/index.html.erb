@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-1" style="padding: 16px 0px 16px 16px">
+      <%= link_to :back, class: "back-btn" do %>
+        <i class='fas fa-arrow-left'></i>
+      <% end %>
+    </div>
+    <div class="col-11">
+      <h2 class="title">dream labels</h2>
+    </div>
+  </div>
+  <div class="px-4 pt-2">
+    <% if @labels.exists? %>
+      <% @labels.each do |label| %>
+        <div class="d-flex justify-content-between px-2 mt-2">
+          <p class="labels index-labels"><%= label.title %></p>
+          <div>
+            <%= link_to "edit", edit_label_path(label), style: "padding-right: 8px" %>
+            <%= link_to "delete", label_path(label), method: :delete, class: "gray-link" %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="px-2 mt-2 text-align-center gray-color">you have no labels yet</p>
+    <% end %>
+
+    <div class="d-flex justify-content-center mt-4">
+      <%= link_to "+ add label", new_label_path, class: "white-btn" %>
+    </div>
+  </div>
+</div>

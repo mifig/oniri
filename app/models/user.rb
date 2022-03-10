@@ -4,8 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :dreams
-  has_many :labels
+  has_many :dreams, through: :dream_labels, dependent: :destroy
+  has_many :labels, through: :dream_labels, dependent: :destroy
+  has_many :dream_labels, dependent: :destroy
   has_many :significances
 
   has_one_attached :photo

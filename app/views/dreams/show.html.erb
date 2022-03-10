@@ -11,7 +11,7 @@
   </div>
   <div class="px-4">
     <p class="gray-color text-align-center"><%= @dream.title %></p>
-    <p class="mt-5 small-font"><%= @dream.significance.sign_type %></p>
+    <p class="mt-5 small-font pad-15px"><%= @dream.significance.sign_type %></p>
     <p class="text-align-justify scrolled-text" style="white-space: pre-wrap"><%= @dream.content %></p>
     <div class="d-flex labels-position">
       <% @dream.labels.each do |label| %>

@@ -1,4 +1,4 @@
-<div class="container" data-controller="show-labels">
+<div class="container" data-controller="show-labels show-sign">
   <%= simple_form_for [@label, @dream], data: { new_dream_target: "form" }, method: :put do |f| %>
     <div class="row">
       <div class="col-1" style="padding: 16px 0px 16px 16px">
@@ -20,15 +20,15 @@
                           label: false, 
                           input_html: { class: "bg-none-input" } %>
       <div class="d-flex justify-content-between">
-        <a class="add-input-btn" data-action="click->sign-dream#showSigns">+ significance</a>
-        <a class="add-input-btn" data-action="click->labels-dream#showLabels">+ label</a>
+        <a class="add-input-btn" data-show-sign-target="sign" data-action="click->sign-dream#showSigns"><i class="fas fa-cog"></i> <%= @dream.significance.sign_type %></a>
+        <a class="add-input-btn" data-action="click->labels-dream#showLabels"><i class="fas fa-cog"></i> labels</a>
       </div>
       <div class="d-none visuallyhidden label-input" data-sign-dream-target="addsign">
         <%= f.association :significance,  label_method: :sign_type,
                                           as: :radio_buttons,
                                           label: false %>
         <div class="d-flex justify-content-center">
-          <a class="add-input-btn" data-action="click->sign-dream#showSigns">save significance</a>
+          <a class="add-input-btn" data-action="click->sign-dream#showSigns  click->show-sign#showSign">save significance</a>
         </div>
       </div>
       <div class="d-none visuallyhidden label-input" data-labels-dream-target="addlabel">
@@ -50,10 +50,10 @@
                             input_html: { class: "bg-none-input small-font vh40 text-align-start" } %>
       <%= f.button :submit, type: "hidden" %>
     <% end %>
-  </div>
-  <div class="d-flex labels-position" data-show-labels-target="labelcontainer">
-    <% @dream.labels.each do |label| %>
-      <p class="labels"><%= label.title %></p>
-    <% end %>
+    <div class="d-flex labels-position" data-show-labels-target="labelcontainer">
+      <% @dream.labels.each do |label| %>
+        <p class="labels"><%= label.title %></p>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Significance.create(sign_type: "ordinary")
+Significance.create(sign_type: "! significant")
+Significance.create(sign_type: "!! profound")
+
+# Label.create(title: "love")
+# Label.create(title: "death")
+# Label.create(title: "birth")
+# Label.create(title: "rebirth")
+# Label.create(title: "animals")
+# Label.create(title: "philosophy")
+# Label.create(title: "comic")
+# Label.create(title: "nightmare")

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_07_125817) do
+ActiveRecord::Schema.define(version: 2022_03_10_123445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,10 @@ ActiveRecord::Schema.define(version: 2022_03_07_125817) do
   create_table "dream_labels", force: :cascade do |t|
     t.bigint "dream_id", null: false
     t.bigint "label_id", null: false
+    t.bigint "user_id", null: false
     t.index ["dream_id"], name: "index_dream_labels_on_dream_id"
     t.index ["label_id"], name: "index_dream_labels_on_label_id"
+    t.index ["user_id"], name: "index_dream_labels_on_user_id"
   end
 
   create_table "dreams", force: :cascade do |t|
@@ -27,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_03_07_125817) do
     t.string "content"
     t.bigint "user_id", null: false
     t.bigint "significance_id", null: false
-    t.datetime "dream_date", default: "2022-03-08 15:16:03"
+    t.datetime "dream_date", default: "2022-03-10 13:01:22"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["significance_id"], name: "index_dreams_on_significance_id"
@@ -38,6 +40,9 @@ ActiveRecord::Schema.define(version: 2022_03_07_125817) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "color", default: "#51C4D3"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_labels_on_user_id"
   end
 
   create_table "significances", force: :cascade do |t|
@@ -57,7 +62,7 @@ ActiveRecord::Schema.define(version: 2022_03_07_125817) do
     t.string "username"
     t.string "first_name"
     t.string "last_name"
-    t.string "role"
+    t.string "role", default: "user"
     t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -65,6 +70,8 @@ ActiveRecord::Schema.define(version: 2022_03_07_125817) do
 
   add_foreign_key "dream_labels", "dreams"
   add_foreign_key "dream_labels", "labels"
+  add_foreign_key "dream_labels", "users"
   add_foreign_key "dreams", "significances"
   add_foreign_key "dreams", "users"
+  add_foreign_key "labels", "users"
 end

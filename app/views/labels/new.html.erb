@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-1" style="padding: 16px 0px 16px 16px">
+      <%= link_to :back, class: "back-btn" do %>
+        <i class='fas fa-arrow-left'></i>
+      <% end %>
+    </div>
+    <div class="col-11">
+      <h2 class="title">dream labels</h2>
+    </div>
+  </div>
+  <div class="px-4 pt-2">
+    <%= simple_form_for @label do |f|%>
+      <%= f.input :title %>
+      <%= f.input :color, input_html: { type: "color" } %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>

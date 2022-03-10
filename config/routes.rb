@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   get "activity", to: "dreams#activity", as: :activity
   resources :dreams
+  resources :labels, except: [:show]
 end
