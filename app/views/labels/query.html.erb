@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-1" style="padding: 16px 0px 16px 16px">
+      <%= link_to labels_path, class: "back-btn" do %>
+        <i class="fas fa-cog"></i>
+      <% end %>
+    </div>
+    <div class="col-11">
+      <h2 class="title">dream labels</h2>
+    </div>
+  </div>
+  <div>
+    <% @dreams.each do |dream| %>
+      <div>
+        <p><%= dream.dream_date.strftime("%d %b %Y") %> - <%= dream.title %></p>
+        <p><%= dream.content[0..35] %>...</p>
+        <div class="d-flex justify-content-start flex-wrap">
+          <% dream.labels.each do |label| %>
+            <p class="labels" style="background: <%= label.color %>"><%= label.title %></p>
+          <% end %>
+        </div>
+        <hr>
+      </div>
+    <% end %>
+  </div>
+</div>

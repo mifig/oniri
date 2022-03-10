@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  get "activity", to: "dreams#activity", as: :activity
+  get "dreams/activity", to: "dreams#activity", as: :dreams_activity
+  get "labels/query", to: "labels#query", as: :labels_query
+  
   resources :dreams
   resources :labels, except: [:show]
 end

@@ -4,6 +4,14 @@ class LabelsController < ApplicationController
   def index
     @labels = policy_scope(current_user.labels)
   end
+
+  def query
+    @dreams = current_user.dreams.all
+
+    @dreams.each do |dream|
+      authorize dream
+    end
+  end
   
   def new
     @label = current_user.labels.new
