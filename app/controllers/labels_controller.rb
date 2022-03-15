@@ -1,15 +1,28 @@
 class LabelsController < ApplicationController
   before_action :set_label, only: [:edit, :update, :destroy]
+  after_action :verify_authorized, except: [:index, :query], unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: [:index, :query], unless: :skip_pundit?
 
   def index
     @labels = policy_scope(current_user.labels)
   end
 
   def query
-    @dreams = current_user.dreams.all
+    @filtered_labels = policy_scope(current_user.labels)
 
-    @dreams.each do |dream|
-      authorize dream
+    if params.dig(:search, :title).present?
+      filter_by_label_title
+    end
+
+    filtered_dreams_id = DreamLabel.where(labels: @filtered_labels).distinct.pluck("dream_id")
+    @filtered_dreams = Dream.find(filtered_dreams_id)
+
+    @filtered_dreams.sort_by do |dream|
+      if params.dig(:search, :column) == "date"
+        dream.dream_date
+      else
+        dream.significance
+      end
     end
   end
   
@@ -82,5 +95,13 @@ class LabelsController < ApplicationController
 
   def label_params
     params.require(:label).permit(:title, :color, :user_id, :dream_ids)
+  end
+
+  def filter_by_label_title
+    if params.dig(:search)[:title] == "all"
+      @filtered_labels = current_user.labels
+    else
+      @filtered_labels = Label.where(title: params.dig(:search)[:title], user_id: current_user.id)
+    end
   end
 end

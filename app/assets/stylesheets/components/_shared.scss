@@ -76,4 +76,28 @@ a {
   color: #51C4D3;
   text-align: center;
   padding: 0px !important;
+  position: absolute;
+  left: 25%;
+}
+
+.title-within {
+  margin-top: 18px;
+  background: none !important;
+  border: none;
+  font-size: 32px;
+  color: #51C4D3;
+  text-align: center;
+  padding: 0px !important;
+  margin: 0;
+}
+
+.top-title {
+  display: flex;
+  align-items: center;
+  top: 0px;
+  width: 100vw;
+  position: fixed;
+  background: linear-gradient(180deg, white 0.52%, white 54.69%);
+  box-shadow: 0px 10px 30px white;
+  left: 0;
 }

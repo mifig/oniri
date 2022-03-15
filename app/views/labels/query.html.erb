@@ -1,26 +1,62 @@
 <div class="container">
-  <div class="row">
+  <div class="top-title">
     <div class="col-1" style="padding: 16px 0px 16px 16px">
       <%= link_to labels_path, class: "back-btn" do %>
         <i class="fas fa-cog"></i>
       <% end %>
     </div>
     <div class="col-11">
-      <h2 class="title">dream labels</h2>
+      <h2 class="title-within">dream labels</h2>
     </div>
   </div>
-  <div>
-    <% @dreams.each do |dream| %>
-      <div>
-        <p><%= dream.dream_date.strftime("%d %b %Y") %> - <%= dream.title %></p>
-        <p><%= dream.content[0..35] %>...</p>
-        <div class="d-flex justify-content-start flex-wrap">
-          <% dream.labels.each do |label| %>
-            <p class="labels" style="background: <%= label.color %>"><%= label.title %></p>
+  <div class="filter-labels-form">
+    <%= form_for :search, url: labels_query_path, method: :get, data: { new_dream_target: "form" } do |f| %>
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <%= f.label "label:", class: "label-label" %>
+        </div>
+        <div class="label-filter">
+          <%= f.select :title, options_for_select(current_user.labels, params.dig(:search, :title)), {}, class: "drop-select" do %>
+            <%= content_tag(:option, "all", value: "all") %>
+            <% current_user.labels.each do |label| %>
+              <%= content_tag(:option, label.title, value: label.title) %>
+            <% end %>
           <% end %>
         </div>
-        <hr>
       </div>
+      <div class="mt-3">
+        <%= f.label "order by:", class: "label-center" %>
+        <div class="d-flex justify-content-between">
+          <%= f.select :column, options_for_select(["date","significance"], params.dig(:search, :column)), {}, class: "drop-select-gray"  %>
+          <%= f.select :order, options_for_select(["asc","desc"], params.dig(:search, :order)), {}, class: "drop-select-gray"  %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class="dreams-list">
+    <% if @filtered_dreams.present? %>
+      <% @filtered_dreams.each do |dream| %>
+        <%= link_to dream_path(dream) do %>
+        <div>
+          <div class="d-flex justify-content-between">
+            <div class="d-flex">
+              <p class="sig-importance" style="color: <%= dream.significance.importance == "!!" ? "#C86464" : "gray" %>"><%= dream.significance.importance %></p>
+              <p class="dream-title"><%= dream.dream_date.strftime("%d %b %Y") %> - <%= dream.title %></p>
+            </div>
+            <div class="d-flex">
+              <p class="labels mb-0" style="background: <%= dream.labels[0].color %>"><%= dream.labels[0].title %></p>
+              <% if dream.labels.count > 1 %>
+                <p class="plus-labels">+<%= dream.labels.count - 1 %></p>
+              <% end %>
+            </div>
+          </div>
+          <p class="dream-content"><%= dream.content[0..35] %>...</p>
+          <hr>
+        </div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>

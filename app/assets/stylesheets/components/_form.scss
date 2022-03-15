@@ -3,7 +3,7 @@
   background: none !important;
   border: none;
   font-size: 22px;
-  color: #51C4D3;
+  color: $blue;
   text-align: center;
   padding: 0px !important;
   cursor: pointer;
@@ -11,6 +11,7 @@
 
 .form-check-input {
   position: absolute;
+  background: white;
 }
 
 .bg-none-input {
@@ -105,4 +106,59 @@ legend {
       position: relative;
     }
   }
+}
+
+.form-control {
+  background: white;
+
+  &:focus {
+    background: none;
+  }
+}
+
+textarea.form-control {
+  background: none;
+}
+
+.filter-labels-form {
+  margin-top: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label-filter {
+  padding-left: 25px;
+  margin-left: 10px;
+  border-left: 1px solid #D5D5D5;
+}
+
+.label-label {
+  margin-right: 15px;
+  font-size: 12px;
+  color: black;
+  font-weight: bold;
+}
+
+.label-center {
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+  color: black;
+  font-weight: bold;
+}
+
+.drop-select {
+  border: none;
+  color: $blue;
+  background: none;
+  font-size: 12px;
+  width: 100px;
+}
+
+.drop-select-gray {
+  color: #636363;
+  background: none;
+  border: none;
+  font-size: 12px;
 }

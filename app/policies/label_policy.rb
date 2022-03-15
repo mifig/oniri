@@ -10,6 +10,10 @@ class LabelPolicy < ApplicationPolicy
     user_is_owner_or_admin?
   end
 
+  def query?
+    user_is_owner_or_admin?
+  end
+
   def create?
     true
   end
