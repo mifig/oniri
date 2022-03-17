@@ -17,12 +17,19 @@ class LabelsController < ApplicationController
     filtered_dreams_id = DreamLabel.where(labels: @filtered_labels).distinct.pluck("dream_id")
     @filtered_dreams = Dream.find(filtered_dreams_id)
 
-    @filtered_dreams.sort_by do |dream|
+    @filtered_dreams = @filtered_dreams.sort_by do |dream|
       if params.dig(:search, :column) == "date"
         dream.dream_date
       else
         dream.significance
       end
+    end
+
+    @filtered_dreams = @filtered_dreams.reverse if params.dig(:search, :order) == "desc"
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'labels/partials/filtered_dreams_list.html', locals: { filtered_dreams: @filtered_dreams } }
     end
   end
   

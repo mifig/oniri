@@ -1,0 +1,24 @@
+<div class="dreams-list" data-filter-labels-target="dreamslist">
+  <% if @filtered_dreams.present? %>
+    <% @filtered_dreams.each do |dream| %>
+      <%= link_to dream_path(dream) do %>
+      <div>
+        <div class="d-flex justify-content-between">
+          <div class="d-flex">
+            <p class="sig-importance" style="color: <%= dream.significance.importance == "!!" ? "#C86464" : "gray" %>"><%= dream.significance.importance %></p>
+            <p class="dream-title"><%= dream.dream_date.strftime("%d %b %Y") %> - <%= dream.title %></p>
+          </div>
+          <div class="d-flex">
+            <p class="labels mb-0" style="background: <%= dream.labels[0].color %>"><%= dream.labels[0].title %></p>
+            <% if dream.labels.count > 1 %>
+              <p class="plus-labels">+<%= dream.labels.count - 1 %></p>
+            <% end %>
+          </div>
+        </div>
+        <p class="dream-content"><%= dream.content[0..35] %>...</p>
+        <hr>
+      </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

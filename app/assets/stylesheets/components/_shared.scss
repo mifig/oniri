@@ -101,3 +101,12 @@ a {
   box-shadow: 0px 10px 30px white;
   left: 0;
 }
+
+.top-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  padding-bottom: 20px;
+  border-bottom: 6px solid #51C4D3;
+}

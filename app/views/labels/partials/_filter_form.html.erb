@@ -1,0 +1,55 @@
+<%= form_for  :search, 
+              url: labels_query_path, 
+              method: :get, 
+              data: { 
+                new_dream_target: "form",
+                filter_labels_target: "form" 
+              } do |f| %>
+  <div class="d-flex justify-content-between align-items-center">
+    <div>
+      <%= f.label "label:", class: "label-label" %>
+    </div>
+    <div class="label-filter">
+      <%= f.select  :title, 
+                    options_for_select(current_user.labels, params.dig(:search, :title)),
+                    {},
+                    {
+                      data: { 
+                        filter_labels_target: "filterInput",
+                        action: "change->filter-labels#filter"
+                      }, 
+                      class: "drop-select" 
+                    } do %>
+        <%= content_tag(:option, "all", value: "all") %>
+        <% current_user.labels.each do |label| %>
+          <%= content_tag(:option, label.title, value: label.title) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="mt-3">
+    <%= f.label "order by:", class: "label-center" %>
+    <div class="d-flex justify-content-between">
+      <%= f.select  :column, 
+                    options_for_select(["date","significance"], params.dig(:search, :column)),
+                    {},
+                    {
+                      class: "drop-select-gray",
+                      data: { 
+                        filter_labels_target: "filterColInput",
+                        action: "change->filter-labels#filter"
+                      }
+                    } %>
+      <%= f.select  :order, 
+                    options_for_select(["asc","desc"], params.dig(:search, :order)), 
+                    {}, 
+                    {
+                      class: "drop-select-gray",
+                      data: { 
+                        filter_labels_target: "filterOrderInput",
+                        action: "change->filter-labels#filter"
+                      }
+                    } %>
+    </div>
+  </div>
+<% end %>
