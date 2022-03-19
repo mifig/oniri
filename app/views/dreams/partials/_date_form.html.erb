@@ -8,23 +8,23 @@
     <%= f.label "from:", class: "label-label width-35px" %>
     <%= f.date_field  :begin_date, 
                       as: :date,
-                      class: "datepicker sm-blue"
-                      # data: { 
-                      #   filter_date_target: "filterInput",
-                      #   action: "change->filter-labels#filter"
-                      # }, 
+                      class: "datepicker sm-blue",
+                      data: { 
+                        filter_date_target: "filterInput",
+                        action: "change->filter-date#filter"
+                      }
                       %>
   </div>
   <div class="d-flex align-items-center justify-content-center">
     <%= f.label "to:", class: "label-label width-35px" %>
     <%= f.date_field :end_date, 
                       as: :date,
-                      class: "datepicker sm-blue"
-                      # data: { 
-                      #   filter_labels_target: "filterInput",
-                      #   action: "change->filter-labels#filter"
-                      # }, 
+                      class: "datepicker sm-blue",
+                      data: { 
+                        filter_date_target: "filterInput",
+                        action: "change->filter-date#filter"
+                      }
                       %>
   </div>
-  <%= f.button "submit" %>
+  <%= f.button "submit", class: "d-none" %>
 <% end %>

@@ -4,12 +4,14 @@ class DreamsController < ApplicationController
   after_action :verify_authorized, except: [:index, :activity], unless: :skip_pundit?
   
   def index
-    @dreams = policy_scope(Dream)
+    @dreams = policy_scope(Dream).order(:dream_date)
+    
+    @months = @dreams.select(:dream_date).map { |dream| "#{Date::MONTHNAMES[dream.dream_date.month]} #{dream.dream_date.year}" }.uniq
+    @years = @dreams.select(:dream_date).map { |dream| dream.dream_date.year }.uniq
   end
 
   def activity
     @dreams = policy_scope(Dream)
-
     if params.dig(:search, :begin_date).present? && params.dig(:search, :end_date).present?
       @dreams = @dreams.where(dream_date: params.dig(:search, :begin_date)..params.dig(:search, :end_date), 
                               user_id: current_user.id)
@@ -22,6 +24,18 @@ class DreamsController < ApplicationController
     end
 
     @label_colors = get_label_colors()
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'dreams/partials/dream_stats.html', 
+                    locals: { 
+                      dreams: @dreams,
+                      dreams_by_lable: @dreams_by_lable,
+                      dreams_by_significance: @dreams_by_significance,
+                      label_colors: @label_colors
+                    }
+                   }
+    end
   end
 
   def show

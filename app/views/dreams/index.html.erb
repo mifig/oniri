@@ -1,0 +1,17 @@
+<div class="top-fixed", style="width: 100vw">
+  <h1 class="title-center">my dreams</h1>
+</div>
+<div class="container" data-controller="toggle-dreams" style="background: white; min-height: 100vh; padding-bottom: 100px; margin-top: 90px">
+  <% @years.each do |year| %>
+    <button class="title-center mb-0 blue-border-top" id="<%= year %>" data-action="click->toggle-dreams#toggleDreams" style="background: none; width: 100%"><%= year %></button>
+    <div id="year-<%= year %>">
+      <% @months.each do |month| %>
+        <% if month.split[1] == "#{year}" %>
+          <button class="blue small pt-3 mb-1" id="<%= year %>-<%= month.split[0] %>" data-action="click->toggle-dreams#toggleDreams" style="border: none;background: none; width: 100%"><%= month.split[0] %></button>
+        <% end %>
+
+        <%= render "dreams/partials/dream_link", month: month, year: year %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

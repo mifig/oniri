@@ -10,18 +10,31 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "form", "dreamslist", "filterInput", "filterColInput", "filterOrderInput" ]
-
-  connect() {
-    console.log("Hello from filter_labels controller!")
-  }
+  static targets = [ "form", "dreamstats", "filterInput" ]
   
   filter() {
-    const url = `${this.formTarget.action}?search[title]=${this.filterInputTarget.value}&search[column]=${this.filterColInputTarget.value}&search[order]=${this.filterOrderInputTarget.value}`
-    fetch(url, { headers: { 'Accept': 'text/plain' } })
-      .then(response => response.text())
-      .then((data) => {
-        this.dreamslistTarget.outerHTML = data;
-      })
+    if(this.filterInputTargets[0].value != '' && this.filterInputTargets[1].value != '') {
+      const url = `${this.formTarget.action}?search[begin_date]='${this.filterInputTargets[0].value}'&search[end_date]='${this.filterInputTargets[1].value}'`
+      console.log(url)
+      fetch(url, { headers: { 'Accept': 'text/plain' } })
+        .then(response => response.text())
+        .then((data) => {
+          console.log(this.dreamstatsTarget)
+          this.dreamstatsTarget.outerHTML = data
+          
+          // Rerun (=recreate) Chartkick scripts, since outerHTML substitution doesn't
+          // run the script functions of chatkcik.js:
+          Array.from(this.dreamstatsTarget.querySelectorAll("script")).forEach( oldScript => {
+            const newScript = document.createElement("script");
+            Array.from(oldScript.attributes).forEach( attr => 
+              newScript.setAttribute(attr.name, attr.value) 
+            );
+  
+            newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+            oldScript.parentNode.replaceChild(newScript, oldScript);
+          });
+        }
+      )
+    }
   }
 }

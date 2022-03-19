@@ -136,3 +136,59 @@ a {
   font-size: 16px;
   text-align: center;
 }
+
+.blue {
+  color: $blue;
+}
+
+.small {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.blue-border-top {
+  padding-top: 10px;
+  margin-top: 10px;
+  border: 1px solid $blue;
+  border-bottom: none;
+  border-right: none;
+  border-left: none;
+  
+  &:first-of-type {
+    border: none;
+  }
+}
+
+.border-gray-thin {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.hover-bottom {
+  animation: MoveUpDownBottom 2s linear infinite;
+  position: absolute;
+}
+
+.slide-middle {
+  animation: SlideMiddle 5s linear;
+  position: absolute;
+  bottom: 50%;
+}
+
+@keyframes SlideMiddle {
+  from {
+    bottom: 0%;
+  }
+
+  to {
+    bottom: 50%;
+  }
+}
+
+@keyframes MoveUpDownBottom {
+  0%, 100% {
+    bottom: 9.4%;
+  }
+  50% {
+    bottom: 8.6%;
+  }
+}
