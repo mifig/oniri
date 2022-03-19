@@ -1,0 +1,30 @@
+<div class="container">
+  <h1 class="title-center">dream activity</h2>
+  <%= render 'dreams/partials/date_form' %>
+
+  <div class="px-4 pt-5">
+    <h2 class="h2-gray-title">dreams timeline</h2>
+    <%= line_chart  @dreams.group_by_month(:dream_date).count(:dream_date), 
+                    colors: ["#51C4D3"],
+                    label: "# dreams"
+    %>
+  </div>
+
+  <div class="px-4 pt-5">
+    <h2 class="h2-gray-title">dream categories</h2>
+    <%= pie_chart @dreams_by_lable, 
+                  colors: @label_colors,
+                  legend: "bottom",
+                  label: "# dreams",
+                  donut: true
+    %>
+  </div>
+
+  <div class="px-4 pt-5" style="padding-bottom: 100px">
+    <h2 class="h2-gray-title">dreams significance</h2>
+    <%= column_chart  @dreams_by_significance, 
+                    colors: ["#126E82"],
+                    label: "# dreams"
+    %>
+  </div>
+</div>

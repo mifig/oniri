@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <div class="navbar-bt">
-    <%= link_to "#" do %>
+    <%= link_to dreams_activity_path do %>
       <i class='fas fa-chart-line'></i>
     <% end %>
 
@@ -18,8 +18,6 @@
       <button class="save-btn box-white-shadow" data-action="click->new-label#sendForm">create</button>
     <% elsif controller_name == "dreams" && action_name == "edit" %>
       <button class="save-btn box-white-shadow" data-action="click->new-dream#sendForm">save</button>
-    <% elsif controller_name == "labels" && action_name == "query" %>
-      <button class="save-btn box-white-shadow" data-action="click->new-dream#sendForm">search</button>
     <% else %>
       <%= link_to "+", new_dream_path, class: "add-btn box-white-shadow" %>
       <button class="d-none save-btn box-white-shadow" data-action="click->new-dream#sendForm">save</button>
