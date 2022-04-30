@@ -104,3 +104,10 @@
   color: white;
   text-shadow: 0px 0px 8px white;
 }
+
+.bottom-pos {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}

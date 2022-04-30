@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 Significance.create(sign_type: "ordinary", importance: "")
 Significance.create(sign_type: "! significant", importance: "!")
 Significance.create(sign_type: "!! profound", importance: "!!")

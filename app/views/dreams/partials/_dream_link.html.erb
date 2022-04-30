@@ -8,9 +8,11 @@
             <p class="dream-title"><%= dream.dream_date.strftime("%d %b %Y") %> - <%= dream.title[0..10] %>...</p>
           </div>
           <div class="d-flex">
-            <p class="labels mb-0" style="background: <%= dream.labels[0].color %>"><%= dream.labels[0].title %></p>
-            <% if dream.labels.count > 1 %>
-              <p class="plus-labels">+<%= dream.labels.count - 1 %></p>
+            <% if dream.labels.exists? %>
+              <p class="labels mb-0" style="background: <%= dream.labels[0].color%>"><%= dream.labels[0].title %></p>
+              <% if dream.labels.count > 1 %>
+                <p class="plus-labels">+<%= dream.labels.count - 1 %></p>
+              <% end %>
             <% end %>
           </div>
         </div>

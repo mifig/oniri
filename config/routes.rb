@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get "dreams/activity", to: "dreams#activity", as: :dreams_activity
   get "labels/query", to: "labels#query", as: :labels_query
+  get "profile", to: "pages#profile", as: :profile
   
   resources :dreams
   resources :labels, except: [:show]

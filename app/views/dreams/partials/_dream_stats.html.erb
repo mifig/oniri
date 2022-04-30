@@ -1,9 +1,10 @@
-<div data-filter-date-target="dreamstats">
+<div data-filter-date-target="dreamstats" style="margin-top: 130px">
   <div class="px-4 pt-5">
     <h2 class="h2-gray-title">dreams timeline</h2>
     <%= line_chart  @dreams.group_by_month(:dream_date).count(:dream_date), 
                     colors: ["#51C4D3"],
-                    label: "# dreams"
+                    label: "# dreams",
+                    empty: "no dreams found"
     %>
   </div>
 
@@ -13,7 +14,8 @@
                   colors: @label_colors,
                   legend: "bottom",
                   label: "# dreams",
-                  donut: true
+                  donut: true,
+                  empty: "no dreams found"
     %>
     <div class="d-flex justify-content-center mt-4">
       <%= link_to "+ add label", new_label_path, class: "white-btn-shadowed" %>
@@ -24,7 +26,8 @@
     <h2 class="h2-gray-title">dreams significance</h2>
     <%= column_chart  @dreams_by_significance, 
                     colors: ["#126E82"],
-                    label: "# dreams"
+                    label: "# dreams",
+                    empty: "no dreams found"
     %>
   </div>
 </div>

@@ -2,7 +2,7 @@
   <% if user_signed_in? %>
     <%= link_to "log-out", destroy_user_session_path, method: :delete, class: "blue-link-btn top-abs" %>
     
-    <div class="slide-middle">
+    <div class="deblur">
       <h1 class="white-glow">good morning</h1>
       <h1 class="white-glow"><%= current_user.first_name %></h1>
     </div>
@@ -11,7 +11,7 @@
       <%= link_to "add a dream", new_dream_path, class: "big-white-link" %>
     </div>
   <% else %>
-    <h1 class="logo">oniri</h1>
+    <h1 class="logo deblur">oniri</h1>
     <%= link_to "sign-up", new_user_registration_path, class: "white-link-btn bottom-ontop-abs" %>
   <% end %>
 </div>

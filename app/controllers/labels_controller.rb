@@ -25,6 +25,10 @@ class LabelsController < ApplicationController
       end
     end
 
+    if params.dig(:search, :title) == "all" || !params.dig(:search, :title).present?
+      @filtered_dreams = policy_scope(Dream)
+    end
+
     @filtered_dreams = @filtered_dreams.reverse if params.dig(:search, :order) == "desc"
 
     respond_to do |format|

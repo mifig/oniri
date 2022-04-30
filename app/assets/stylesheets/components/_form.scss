@@ -163,3 +163,77 @@ textarea.form-control {
   border: none;
   font-size: 12px;
 }
+
+.input-box {
+  border: none;
+  background-image: none !important;
+  background: rgba(255, 255, 255, 0.4) !important;
+  border-radius: 6px;
+  padding: 20px 16px 8px 16px;
+  font-size: 14px;
+
+  &:focus {
+    box-shadow: 0px 0px 0px 3px rgba(81, 196, 211, 0.25) !important;
+  }
+}
+
+.is-valid {
+  // border: none;
+  // background-image: none !important;
+  // background: rgba(255, 255, 255, 0.4) !important;
+  // border-radius: 6px;
+  // padding: 20px 16px 8px 16px;
+  // font-size: 14px;
+
+  &:focus {
+    box-shadow: 0px 0px 0px 3px rgba(81, 196, 211, 0.25) !important;
+  }
+}
+
+.input-div {
+  position: relative;
+  margin-bottom: 6px !important;
+
+  label {
+    position: absolute;
+    left: 16px;
+    top: 6px;
+    transition: all 0.5s;
+    color: gray;
+    font-size: 10px;
+  }
+
+  input {
+    border: none;
+    background-image: none !important;
+    background: rgba(255, 255, 255, 0.4) !important;
+    border-radius: 6px;
+    padding: 20px 16px 8px 16px;
+    font-size: 14px;
+  }
+}
+
+.label-group {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #51C4D3;
+  margin: 0;
+  padding: 10px;
+  margin-top: 10px;
+  text-shadow: 0px 0px 12px white;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 6px 6px 0px 0px;
+}
+
+.white-box {
+  box-shadow: 0px 0px 8px white;
+  border: solid 2px #ffffff !important;
+}
+
+.no-focus {
+  input:focus {
+  box-shadow: 0px 0px 8px white !important;
+  border: solid 2px #ffffff !important;
+  }
+}

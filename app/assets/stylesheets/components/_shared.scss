@@ -107,8 +107,9 @@ a {
   top: 0;
   left: 0;
   background: white;
-  padding-bottom: 20px;
-  border-bottom: 6px solid #51C4D3;
+  padding: 20px 0px;
+  // border-bottom: 1px solid #51C4D3;
+  box-shadow: 0px 0px 8px #51c4d3;
 }
 
 .title-center {
@@ -168,19 +169,18 @@ a {
   position: absolute;
 }
 
-.slide-middle {
-  animation: SlideMiddle 5s linear;
+.deblur {
+  animation: Deblur 2s linear;
   position: absolute;
-  bottom: 50%;
 }
 
-@keyframes SlideMiddle {
+@keyframes Deblur {
   from {
-    bottom: 0%;
+    filter: blur(30px);
   }
 
   to {
-    bottom: 50%;
+    filter: blur(0px);
   }
 }
 
@@ -191,4 +191,34 @@ a {
   50% {
     bottom: 8.6%;
   }
+}
+
+.blue-shadow {
+  box-shadow: 0px 0px 16px #51c4d3;
+}
+
+.profile-separator {
+  background: rgba(255,255,255,0.8);
+  border-radius: 6px 6px 0px 0px;
+  padding: 5px 14px 5px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  color: gray;
+  margin: 0;
+}
+
+.link-profiles {
+  font-size: 14px;
+  // color: #132C33;
+}
+
+.profile-tabs {
+  background: rgba(255,255,255,0.25);
+  border-radius: 0px 0px 6px 6px;
+}
+
+.vertical-center {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
 }

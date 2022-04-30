@@ -18,6 +18,8 @@
       <button class="save-btn box-white-shadow" data-action="click->new-label#sendForm">create</button>
     <% elsif controller_name == "dreams" && action_name == "edit" %>
       <button class="save-btn box-white-shadow" data-action="click->new-dream#sendForm">save</button>
+    <% elsif controller_name == "registrations" && action_name == "edit" %>
+      <button class="save-btn box-white-shadow" data-action="click->new-dream#sendForm">save</button>
     <% else %>
       <%= link_to "+", new_dream_path, class: "add-btn box-white-shadow" %>
       <button class="d-none save-btn box-white-shadow" data-action="click->new-dream#sendForm">save</button>
@@ -26,7 +28,7 @@
     <%= link_to labels_query_path do %>
       <i class='fas fa-tags'></i>
     <% end %>
-    <%= link_to edit_user_registration_path do %>
+    <%= link_to profile_path do %>
       <i class='fas fa-user'></i>
     <% end %>
   </div>
