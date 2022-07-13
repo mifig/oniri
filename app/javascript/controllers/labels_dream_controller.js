@@ -10,27 +10,29 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "addlabel" ]
+  static targets = [ "addlabel", "removesign", "labelsBtn" ]
 
-  showLabels() {
-    // console.log(this.addlabelTarget);
-    // this.addlabelTarget.classList.toggle("d-none-transition")
+  showLabels(event) {
+    console.log(this.removesignTarget);
     let label = this.addlabelTarget;
+    let clickedBtn = event.currentTarget;
+    let siblingBtn = clickedBtn.previousElementSibling;
 
-    if (label.classList.contains('d-none')) {
-      label.classList.remove('d-none');
-      setTimeout(function () {
-        label.classList.remove('visuallyhidden');
-      }, 0);
-    } else {
-      label.classList.add('visuallyhidden');    
-      label.addEventListener('transitionend', function(e) {
-        label.classList.add('d-none');
-      }, {
-        capture: false,
-        once: true,
-        passive: false
-      });
-    }
+    siblingBtn.classList.remove("add-input-btn-clicked");
+    label.classList.remove("d-none");
+    label.classList.remove("visuallyhidden");
+    clickedBtn.classList.add("add-input-btn-clicked");
+
+    this.removesignTarget.classList.add("d-none");
+    this.removesignTarget.classList.add("visuallyhidden");
+  }
+
+  closeLabels() {
+    let label = this.addlabelTarget;
+    let tab = document.querySelector(".add-input-btn-clicked");
+
+    label.classList.add("d-none");
+    label.classList.add("visuallyhidden");
+    tab.classList.remove("add-input-btn-clicked");
   }
 }

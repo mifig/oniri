@@ -1,7 +1,7 @@
-<div class="container" data-controller="show-labels">
+<div class="container" data-controller="show-labels sign-dream labels-dream">
   <%= simple_form_for [@label, @dream], data: { new_dream_target: "form" } do |f| %>
     <div class="row">
-      <div class="col-1" style="padding: 16px 0px 16px 16px">
+      <div class="col-1 back-btn-div">
         <%= link_to :back, class: "back-btn" do %>
           <i class='fas fa-arrow-left'></i>
         <% end %>
@@ -15,43 +15,49 @@
                     } %>
       </div>
     </div>
-    <div class="px-4" data-controller="sign-dream labels-dream">
+    <div class="px-4">
       <%= f.input :title, placeholder: "give a title to your dream...", 
                           label: false, 
                           input_html: { class: "bg-none-input" } %>
-      <div class="d-flex justify-content-between">
-        <a class="add-input-btn" data-action="click->sign-dream#showSigns">+ significance</a>
-        <a class="add-input-btn" data-action="click->labels-dream#showLabels">+ label</a>
-      </div>
-      <div class="d-none visuallyhidden label-input" data-sign-dream-target="addsign">
-        <%= f.association :significance,  label_method: :sign_type,
-                                          as: :radio_buttons,
-                                          label: false %>
-        <div class="d-flex justify-content-center">
-          <a class="add-input-btn" data-action="click->sign-dream#showSigns">save significance</a>
-        </div>
-      </div>
-      <div class="d-none visuallyhidden label-input" data-labels-dream-target="addlabel">
-        <%= f.association :labels,  label_method: :title, 
-                                    collection: current_user.labels,
-                                    label: false,
-                                    legend: false,
-                                    as: :check_boxes,
-                                    include_hidden: false, 
-                                    input_html: { 
-                                      multiple: true
-                                    } %>
-        <div class="d-flex justify-content-center pt-3">
-          <a class="add-input-btn" data-action="click->labels-dream#showLabels click->show-labels#showLabels">save labels</a>
-        </div>
-      </div>
       <%= f.input :content, as: :text,
                             placeholder: "bring your dream to consciousness...",
                             label: false,
-                            input_html: { class: "bg-none-input small-font vh40 text-align-start" } %>
+                            input_html: { class: "bg-none-input small-font vh60 text-align-start" } %>
+      <div class="mx-0 mt-3 d-flex labels-position" data-show-labels-target="labelcontainer">
+      </div>
+      <div class="white-round-bg" style="margin-bottom: 95px;">
+        <div class="d-flex justify-content-between">
+          <a class="add-input-btn" data-action="click->sign-dream#showSigns" data-sign-dream-target="signBtn">+ significance</a>
+          <a class="add-input-btn" data-action="click->labels-dream#showLabels" data-labels-dream-target="labelsBtn">+ label</a>
+        </div>
+        <div>
+          <div class="d-none visuallyhidden pad-16px" data-sign-dream-target="addsign" data-labels-dream-target="removesign">
+            <%= f.association :significance,  label_method: :sign_type,
+                                              as: :radio_buttons,
+                                              label: false,
+                                              wrapper_html: { data: { sign_dream_target: "signInput" } } %>
+            <div class="d-flex justify-content-center">
+              <a class="white-save-btn" data-action="click->sign-dream#closeSign">save</a>
+            </div>
+          </div>
+          <div class="d-none visuallyhidden pad-16px" data-labels-dream-target="addlabel" data-sign-dream-target="removelabels">
+            <%= f.association :labels,  label_method: :title, 
+                                        collection: current_user.labels,
+                                        label: false,
+                                        legend: false,
+                                        as: :check_boxes,
+                                        include_hidden: false, 
+                                        input_html: { 
+                                          multiple: true
+                                        } %>
+            <div class="d-flex justify-content-center pt-3">
+              <a class="white-save-btn" data-action="click->show-labels#showLabels click->labels-dream#closeLabels">save</a>
+            </div>
+          </div>
+        </div>
+      </div>
       <%= f.button :submit, type: "hidden" %>
     <% end %>
-  </div>
-  <div class="d-flex labels-position" data-show-labels-target="labelcontainer">
+    <div class="px-4 mt-3 mx-0 d-flex labels-position"></div>
   </div>
 </div>

@@ -1,5 +1,14 @@
+.grad-blue-bg {
+  background: linear-gradient(180deg, white 21.04%, $blue 91.67%);
+  background-repeat: no-repeat;
+}
+
 a {
   text-decoration: none;
+
+  &:hover {
+    color: white;
+  }
 }
 
 .box-white-shadow {
@@ -100,6 +109,7 @@ a {
   background: linear-gradient(180deg, white 0.52%, white 54.69%);
   box-shadow: 0px 10px 30px white;
   left: 0;
+  padding-top: 35px;
 }
 
 .top-fixed {
@@ -107,8 +117,7 @@ a {
   top: 0;
   left: 0;
   background: white;
-  padding: 20px 0px;
-  // border-bottom: 1px solid #51C4D3;
+  padding: 35px 0px 10px 0px;
   box-shadow: 0px 0px 8px #51c4d3;
 }
 
@@ -221,4 +230,32 @@ a {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
+}
+
+.no-box-shadow {
+  box-shadow: none;
+}
+
+.blue-bg {
+  background: $blue;
+}
+
+.white-font {
+  color: white;
+}
+
+.pad-16px {
+  padding: 16px 16px 8px 16px;
+}
+
+.white-round-bg {
+  background: rgba(255,255,255,0.3);
+  border-radius: 24px;
+  padding: 8px 16px;
+}
+
+.white-underline {   
+  color: white;
+  border-bottom: 1px solid white;
+  display: inline-block;
 }

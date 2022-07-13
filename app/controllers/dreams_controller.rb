@@ -4,17 +4,16 @@ class DreamsController < ApplicationController
   after_action :verify_authorized, except: [:index, :activity], unless: :skip_pundit?
   
   def index
-    @dreams = policy_scope(Dream).order(:dream_date)
+    @dreams = policy_scope(Dream.where(user: current_user)).order(:dream_date)
     
     @months = @dreams.select(:dream_date).map { |dream| "#{Date::MONTHNAMES[dream.dream_date.month]} #{dream.dream_date.year}" }.uniq
     @years = @dreams.select(:dream_date).map { |dream| dream.dream_date.year }.uniq
   end
 
   def activity
-    @dreams = policy_scope(Dream)
+    @dreams = policy_scope(Dream.where(user: current_user))
     if params.dig(:search, :begin_date).present? && params.dig(:search, :end_date).present?
-      @dreams = @dreams.where(dream_date: params.dig(:search, :begin_date)..params.dig(:search, :end_date), 
-                              user_id: current_user.id)
+      @dreams = @dreams.where(dream_date: params.dig(:search, :begin_date)..params.dig(:search, :end_date))
 
       @dreams_by_lable = group_dreams_by_lable(query: true)
       @dreams_by_significance = group_dreams_by_significance(query: true)

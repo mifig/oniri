@@ -10,26 +10,34 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "addsign" ]
+  static targets = [ "addsign", "removelabels", "signBtn", "signInput" ]
 
-  showSigns() {
-    console.log("Hello from signs")
+  showSigns(event) {
     let sign = this.addsignTarget;
+    let clickedBtn = event.currentTarget;
+    let siblingBtn = clickedBtn.nextElementSibling;
 
-    if (sign.classList.contains('d-none')) {
-      sign.classList.remove('d-none');
-      setTimeout(function () {
-        sign.classList.remove('visuallyhidden');
-      }, 0);
-    } else {
-      sign.classList.add('visuallyhidden');    
-      sign.addEventListener('transitionend', function(e) {
-        sign.classList.add('d-none');
-      }, {
-        capture: false,
-        once: true,
-        passive: false
-      });
-    }
+    siblingBtn.classList.remove("add-input-btn-clicked");
+    sign.classList.remove("d-none");
+    sign.classList.remove("visuallyhidden");
+    clickedBtn.classList.add("add-input-btn-clicked");
+
+    this.removelabelsTarget.classList.add("d-none");
+    this.removelabelsTarget.classList.add("visuallyhidden");
+  }
+
+  closeSign(event) {
+    let sign = this.addsignTarget;
+    let tab = document.querySelector(".add-input-btn-clicked");
+
+    sign.classList.add("d-none");
+    sign.classList.add("visuallyhidden");
+    tab.classList.remove("add-input-btn-clicked");
+    
+    this.signInputTarget.querySelectorAll(".form-check").forEach((check) => {
+      if (check.querySelector(".radio_buttons").checked == true) {
+        this.signBtnTarget.innerHTML = check.querySelector("label").innerHTML;
+      };
+    });
   }
 }

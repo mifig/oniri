@@ -1,6 +1,6 @@
 .labels {
-  background: $blue;
-  color: white;
+  background: white;
+  color: $blue;
   border-radius: 10px;
   padding: 3px 6px;
   font-size: 12px;
@@ -9,8 +9,6 @@
 
 .labels-position {
   flex-wrap: wrap;
-  margin: 0px 12px;
-  margin-top: 4vh;
 }
 
 .index-labels {

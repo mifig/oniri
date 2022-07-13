@@ -26,7 +26,7 @@ class LabelsController < ApplicationController
     end
 
     if params.dig(:search, :title) == "all" || !params.dig(:search, :title).present?
-      @filtered_dreams = policy_scope(Dream)
+      @filtered_dreams = policy_scope(Dream.where(user: current_user))
     end
 
     @filtered_dreams = @filtered_dreams.reverse if params.dig(:search, :order) == "desc"

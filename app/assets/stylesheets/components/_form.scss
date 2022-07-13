@@ -1,12 +1,14 @@
 .date-input {
-  margin-top: 23px;
+  line-height: 1.5;
+  margin-top: 35px;
   background: none !important;
   border: none;
   font-size: 22px;
-  color: $blue;
+  color: white;
   text-align: center;
   padding: 0px !important;
   cursor: pointer;
+  text-shadow: 0px -1px 6px rgba(255, 255, 255, 0.4);
 }
 
 .form-check-input {
@@ -35,8 +37,8 @@
   font-size: 14px;
 } 
 
-.vh40 {
-  height: 40vh;
+.vh60 {
+  height: 60vh;
   padding: 15px;
 }
 
@@ -108,20 +110,12 @@ legend {
   }
 }
 
-.form-control {
-  background: white;
-
-  &:focus {
-    background: none;
-  }
-}
-
 textarea.form-control {
-  background: none;
+  background: rgba(255,255,255,0.9);
 }
 
 .filter-labels-form {
-  margin-top: 90px;
+  margin-top: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -236,4 +230,25 @@ textarea.form-control {
   box-shadow: 0px 0px 8px white !important;
   border: solid 2px #ffffff !important;
   }
+}
+
+#dream_title {
+  padding: 0.375rem 0.75rem;
+  color: white;
+  text-shadow: 0px -1px 6px rgba(255, 255, 255, 0.4);
+
+  &::placeholder {
+    color: white;
+  }
+
+  &:focus {
+    background: none;
+  }
+}
+
+.form-control:focus {
+  background-color: rgba(255,255,255,0.9);
+  border-color: none;
+  outline: none;
+  box-shadow: none;
 }

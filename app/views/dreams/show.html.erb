@@ -1,25 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="col-1" style="padding: 16px 0px 16px 16px">
+    <div class="col-1 back-btn-div">
       <%= link_to :back, class: "back-btn" do %>
         <i class='fas fa-arrow-left'></i>
       <% end %>
     </div>
     <div class="col-11">
-      <h2 class="date-input"><%= @dream.dream_date.strftime("%d %b %Y,%l:%M %p") %></h2>
+      <h2 class="date-input mb-3"><%= @dream.dream_date.strftime("%d %b %Y") %></h2>
     </div>
   </div>
   <div class="px-4">
-    <p class="gray-color text-align-center"><%= @dream.title %></p>
-    <p class="mt-5 small-font pad-15px"><%= @dream.significance.sign_type %></p>
-    <p class="text-align-justify scrolled-text" style="white-space: pre-wrap"><%= @dream.content %></p>
+    <p class="mb-3 text-align-center" id="dream_title"><%= @dream.title %></p>
+    <p class="text-align-start mb-3 scrolled-text dream-content vh60 small-font bg-none-input" style="white-space: pre-wrap"><%= @dream.content %></p>
+    <p class="white-round-bg white-link-btn"><%= @dream.significance.sign_type %></p>
+    <p class="white-underline">labels:</p>
     <div class="d-flex labels-position">
       <% @dream.labels.each do |label| %>
-        <p class="labels" style="background: <%= label.color %>"><%= label.title %></p>
+        <p class="labels"><%= label.title %></p>
       <% end %>
     </div>
-  </div>
-  <div class="d-flex justify-content-center mt-3">
-    <%= link_to "delete dream", dream_path(@dream), method: :delete, style: "color: white", data: { confirm: "Are you sure?" }  %>
+    <div class="d-flex justify-content-center mt">
+      <%= link_to "delete dream", dream_path(@dream), method: :delete, style: "margin-bottom: 95px;", class: "delete-red-link", data: { confirm: "Are you sure?" }  %>
+    </div>
   </div>
 </div>
