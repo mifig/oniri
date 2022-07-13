@@ -123,7 +123,7 @@ a {
 
 .title-center {
   font-size: 32px;
-  color: #51C4D3;
+  color: white;
   text-align: center;
   margin-top: 18px;
 }
@@ -265,4 +265,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
     opacity: 0;
     -webkit-appearance: none;
+}
+
+.border-bottom-white {
+  border: none;
+  border-bottom: 4px solid white;
+  border-radius: 0px 0px 16px 16px;
+  box-shadow: 0px 13px 10px -10px white;
+}
+
+.shadow-box-black {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.small-regular {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.overflow-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

@@ -18,7 +18,7 @@
     <div class="px-4">
       <%= f.input :title, placeholder: "give a title to your dream...", 
                           label: false, 
-                          input_html: { class: "bg-none-input" } %>
+                          input_html: { class: "bg-none-input", maxlength:"20" } %>
       <%= f.input :content, as: :text,
                             placeholder: "bring your dream to consciousness...",
                             label: false,

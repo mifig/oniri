@@ -1,22 +1,22 @@
 <% @dreams.each do |dream| %>
   <% if Date::MONTHNAMES[dream.dream_date.month] == month.split[0] && dream.dream_date.year == year %>
     <%= link_to dream_path(dream), class: "dream-#{year}-#{month.split[0]}" do %>
-      <div class="pb-2 mb-2 border-gray-thin">
+      <div class="mb-2 white-round-bg shadow-box-black" style="padding: 12px 16px; border: 1.5px solid <%= if dream.significance.importance == "!!" then "rgba(200,100,100,0.5)" elsif dream.significance.importance == "!" then "rgba(249,231,17,0.5)" else "none" end %>">
         <div class="d-flex justify-content-between">
           <div class="d-flex">
-            <p class="sig-importance" style="color: <%= dream.significance.importance == "!!" ? "#C86464" : "gray" %>"><%= dream.significance.importance %></p>
-            <p class="dream-title"><%= dream.dream_date.strftime("%d %b %Y") %> - <%= dream.title[0..10] %>...</p>
+            <p class="sig-importance" style="color: <%= dream.significance.importance == "!!" ? "rgb(200,100,100)" : "rgb(249,231,17)" %>"><%= dream.significance.importance %></p>
+            <p class="dream-title"><%= dream.dream_date.strftime("%d %b") %> | <%= dream.title %></p>
           </div>
           <div class="d-flex">
             <% if dream.labels.exists? %>
-              <p class="labels mb-0" style="background: <%= dream.labels[0].color%>"><%= dream.labels[0].title %></p>
+              <p class="labels mb-0"><%= dream.labels[0].title %></p>
               <% if dream.labels.count > 1 %>
                 <p class="plus-labels">+<%= dream.labels.count - 1 %></p>
               <% end %>
             <% end %>
           </div>
         </div>
-        <p class="dream-content"><%= dream.content[0..25] %>...</p>
+        <p class="mb-0 mt-1 small-regular overflow-text"><%= dream.content %></p>
       </div>
     <% end %>
   <% end %>
