@@ -26,13 +26,11 @@ export default class extends Controller {
     this.removelabelsTarget.classList.add("visuallyhidden");
   }
 
-  closeSign(event) {
+  closeSign() {
     let sign = this.addsignTarget;
-    let tab = document.querySelector(".add-input-btn-clicked");
 
     sign.classList.add("d-none");
     sign.classList.add("visuallyhidden");
-    tab.classList.remove("add-input-btn-clicked");
     
     this.signInputTarget.querySelectorAll(".form-check").forEach((check) => {
       if (check.querySelector(".radio_buttons").checked == true) {

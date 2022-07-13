@@ -37,7 +37,7 @@
                                               label: false,
                                               wrapper_html: { data: { sign_dream_target: "signInput" } } %>
             <div class="d-flex justify-content-center">
-              <a class="white-save-btn" data-action="click->sign-dream#closeSign">save</a>
+              <a class="white-save-btn" data-action="click->sign-dream#closeSign click->show-labels#showLabels click->labels-dream#closeLabels">save</a>
             </div>
           </div>
           <div class="d-none visuallyhidden pad-16px" data-labels-dream-target="addlabel" data-sign-dream-target="removelabels">
@@ -50,8 +50,8 @@
                                         input_html: { 
                                           multiple: true
                                         } %>
-            <div class="d-flex justify-content-center pt-3">
-              <a class="white-save-btn" data-action="click->show-labels#showLabels click->labels-dream#closeLabels">save</a>
+            <div class="d-flex justify-content-center">
+              <a class="white-save-btn" data-action="click->show-labels#showLabels click->labels-dream#closeLabels click->sign-dream#closeSign">save</a>
             </div>
           </div>
         </div>

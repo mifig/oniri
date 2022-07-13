@@ -11,10 +11,6 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
   static targets = [ "form", "dreamslist", "filterInput", "filterColInput", "filterOrderInput" ]
-
-  connect() {
-    console.log("Hello from filter_labels controller!")
-  }
   
   filter() {
     const url = `${this.formTarget.action}?search[title]=${this.filterInputTarget.value}&search[column]=${this.filterColInputTarget.value}&search[order]=${this.filterOrderInputTarget.value}`

@@ -13,7 +13,6 @@ export default class extends Controller {
   static targets = [ "addlabel", "removesign", "labelsBtn" ]
 
   showLabels(event) {
-    console.log(this.removesignTarget);
     let label = this.addlabelTarget;
     let clickedBtn = event.currentTarget;
     let siblingBtn = clickedBtn.previousElementSibling;
