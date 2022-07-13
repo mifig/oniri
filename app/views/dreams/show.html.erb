@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container" style="position: relative">
   <div class="row">
-    <div class="col-1 back-btn-div">
+    <div class="col-2 back-btn-div">
       <%= link_to :back, class: "back-btn" do %>
         <i class='fas fa-arrow-left'></i>
       <% end %>
     </div>
-    <div class="col-11">
+    <div class="" style="position: absolute;">
       <h2 class="date-input mb-3"><%= @dream.dream_date.strftime("%d %b %Y") %></h2>
     </div>
   </div>

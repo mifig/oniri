@@ -252,3 +252,19 @@ textarea.form-control {
   outline: none;
   box-shadow: none;
 }
+
+.form-check-input.is-valid  {
+  border: 1px solid white;
+}
+
+.form-check-input.is-valid ~ .form-check-label {
+  color: white;
+}
+
+.form-check-label {
+  color: white;
+}
+
+.form-control.is-valid {
+  background-image: none;
+}

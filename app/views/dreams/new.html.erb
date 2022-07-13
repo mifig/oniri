@@ -1,12 +1,12 @@
-<div class="container" data-controller="show-labels sign-dream labels-dream">
+<div class="container" style="position: relative" data-controller="show-labels sign-dream labels-dream">
   <%= simple_form_for [@label, @dream], data: { new_dream_target: "form" } do |f| %>
     <div class="row">
-      <div class="col-1 back-btn-div">
+      <div class="col-2 back-btn-div" style="z-index: 9999;">
         <%= link_to :back, class: "back-btn" do %>
           <i class='fas fa-arrow-left'></i>
         <% end %>
       </div>
-      <div class="col-11">
+      <div style="position: absolute">
         <%= f.input :dream_date,  
                     as: :string,
                     label: false,
