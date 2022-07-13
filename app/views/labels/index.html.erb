@@ -1,31 +1,34 @@
 <div class="container">
-  <div class="row">
-    <div class="col-1" style="padding-left: 20px">
+  <div class="row align-items-center" style="padding-top: 35px;">
+    <div class="col-2" style="z-index: 9999; padding: 0px 0px 0px 24px;">
       <%= link_to :back, class: "back-btn" do %>
         <i class='fas fa-arrow-left'></i>
       <% end %>
     </div>
-    <div class="col-11">
-      <h2 class="title">dream labels</h2>
+    <div class="col-10 position-absolute" style="width: 100%">
+      <h2 class="title-center m-0 white-glow">dream labels</h2>
     </div>
   </div>
-  <div class="px-4 pt-2">
+  <div class="px-4 pt-5">
     <% if @labels.exists? %>
-      <% @labels.each do |label| %>
-        <div class="d-flex justify-content-between px-2 mt-2">
-          <p class="labels index-labels" style="background: <%= label.color %>"><%= label.title %></p>
-          <div>
-            <%= link_to "edit", edit_label_path(label), style: "padding-right: 8px" %>
-            <%= link_to "delete", label_path(label), method: :delete, class: "gray-link" %>
+      <div class="white-round-bg">
+        <p class="text-center white-font add-input-btn-clicked">your labels:</p>
+        <% @labels.each do |label| %>
+          <div class="d-flex justify-content-between px-2 mt-2">
+            <p class="labels index-labels mb-3 m-0"><%= label.title %></p>
+            <div>
+              <%= link_to "edit", edit_label_path(label), class: "white-font",style: "padding-right: 8px" %>
+              <%= link_to "delete", label_path(label), method: :delete, class: "delete-red-link" %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% else %>
-      <p class="px-2 mt-2 text-align-center gray-color">you have no labels yet</p>
+      <p class="px-2 mt-2 text-align-center white-font white-round-bg shadow-box-black">you have no labels yet</p>
     <% end %>
 
     <div class="d-flex justify-content-center mt-4">
-      <%= link_to "+ add label", new_label_path, class: "white-btn" %>
+      <%= link_to "+ add label", new_label_path, class: "white-btn white-shadow" %>
     </div>
   </div>
 </div>

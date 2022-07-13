@@ -4,8 +4,8 @@
               data: { 
                 filter_date_target: "form" 
               } do |f| %>
-  <div class="d-flex align-items-center justify-content-center pt-3">
-    <%= f.label "from:", class: "label-label width-35px" %>
+  <div class="d-flex align-items-center justify-content-between my-3 white-filter-form" style="margin: 0px 30vw;">
+    <%= f.label "from:", class: "label-label", style: "padding-right: 10px; margin-right: 10px; border-right: 1px solid #D5D5D5; width: 60px;" %>
     <%= f.date_field  :begin_date, 
                       as: :date,
                       class: "datepicker sm-blue",
@@ -15,8 +15,8 @@
                       }
                       %>
   </div>
-  <div class="d-flex align-items-center justify-content-center">
-    <%= f.label "to:", class: "label-label width-35px" %>
+  <div class="d-flex align-items-center justify-content-center white-filter-form" style="margin: 0px 30vw;">
+    <%= f.label "to:", class: "label-label", style: "padding-right: 10px; margin-right: 10px; border-right: 1px solid #D5D5D5; width: 60px;" %>
     <%= f.date_field :end_date, 
                       as: :date,
                       class: "datepicker sm-blue",

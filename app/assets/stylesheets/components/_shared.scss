@@ -89,25 +89,12 @@ a {
   left: 25%;
 }
 
-.title-within {
-  margin-top: 18px;
-  background: none !important;
-  border: none;
-  font-size: 32px;
-  color: #51C4D3;
-  text-align: center;
-  padding: 0px !important;
-  margin: 0;
-}
-
 .top-title {
   display: flex;
   align-items: center;
   top: 0px;
   width: 100vw;
   position: fixed;
-  background: linear-gradient(180deg, white 0.52%, white 54.69%);
-  box-shadow: 0px 10px 30px white;
   left: 0;
   padding-top: 35px;
 }
@@ -116,9 +103,8 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  background: white;
+  background: var(--bs-blue);
   padding: 35px 0px 10px 0px;
-  box-shadow: 0px 0px 8px #51c4d3;
 }
 
 .title-center {
@@ -269,9 +255,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .border-bottom-white {
   border: none;
-  border-bottom: 4px solid white;
+  border-bottom: 2px solid white;
   border-radius: 0px 0px 16px 16px;
-  box-shadow: 0px 13px 10px -10px white;
+  box-shadow: 0px 10px 10px -10px white;
 }
 
 .shadow-box-black {

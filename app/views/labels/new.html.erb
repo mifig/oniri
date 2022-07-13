@@ -1,21 +1,24 @@
 <div class="container">
-  <div class="row">
-    <div class="col-1" style="padding: 16px 0px 16px 16px">
+  <div class="row align-items-center" style="padding-top: 35px;">
+    <div class="col-2" style="z-index: 9999; padding: 0px 0px 0px 24px;">
       <%= link_to :back, class: "back-btn" do %>
         <i class='fas fa-arrow-left'></i>
       <% end %>
     </div>
-    <div class="col-11">
-      <h2 class="title">dream labels</h2>
+    <div class="col-10 position-absolute" style="width: 100%">
+      <h2 class="title-center m-0 white-glow">new label</h2>
     </div>
   </div>
   <div class="px-4 pt-2">
     <%= simple_form_for @label, data: { new_label_target: "form" } do |f|%>
-      <div style="position: relative; margin: 24px 0px 48px 0px;">
+      <div style="position: relative; margin: 24px 0px 0px 0px;">
         <%= f.input :title, label: false, 
                             placeholder: "your label title...",
-                            input_html: { class: "bg-none-input" } %>
-        <%= f.input :color, label: false, 
+                            input_html: { class: "bg-none-input", 
+                                          id: "dream_title",
+                                          maxlength: 10
+                                        } %>
+        <%#= f.input :color, label: false, 
                             input_html: { type: "color" },
                             wrapper_html: { style: "position: absolute;
                                                     right: 0px;
@@ -23,11 +26,13 @@
                                                     margin-bottom: 0 !important;
                                                     width: 66px;" } %>
       </div>
-      <div class="dreams-input">
-        <p class="text-align-center">label your dreams</p>
+      <div class="white-round-bg">
+        <p class="text-align-center add-input-btn-clicked">label your dreams</p>
         <%= f.association :dreams,  as: :check_boxes, 
                                     include_hidden: false, 
-                                    collection: current_user.dreams %>
+                                    collection: current_user.dreams,
+                                    item_wrapper_class: "dreams-to-add" 
+                                    %>
       </div>
       <%= f.button :submit, type: "hidden" %>
     <% end %>

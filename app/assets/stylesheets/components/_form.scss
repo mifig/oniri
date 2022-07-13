@@ -115,7 +115,7 @@ textarea.form-control {
 }
 
 .filter-labels-form {
-  margin-top: 55px;
+  margin-top: 65px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,7 +139,6 @@ textarea.form-control {
   text-align: center;
   width: 100%;
   font-size: 12px;
-  color: black;
   font-weight: bold;
 }
 
@@ -148,7 +147,6 @@ textarea.form-control {
   color: $blue;
   background: none;
   font-size: 12px;
-  width: 100px;
 }
 
 .drop-select-gray {
@@ -156,6 +154,7 @@ textarea.form-control {
   background: none;
   border: none;
   font-size: 12px;
+  max-width: 55px;
 }
 
 .input-box {
@@ -172,13 +171,6 @@ textarea.form-control {
 }
 
 .is-valid {
-  // border: none;
-  // background-image: none !important;
-  // background: rgba(255, 255, 255, 0.4) !important;
-  // border-radius: 6px;
-  // padding: 20px 16px 8px 16px;
-  // font-size: 14px;
-
   &:focus {
     box-shadow: 0px 0px 0px 3px rgba(81, 196, 211, 0.25) !important;
   }
@@ -267,4 +259,24 @@ textarea.form-control {
 
 .form-control.is-valid {
   background-image: none;
+}
+
+.white-filter-form {
+  background: white;
+  padding: 8px 16px;
+  border-radius: 32px;
+}
+
+.dreams-to-add {
+  display: flex;
+  align-items: center;
+
+  input {
+    margin-top: 0;
+  }
+
+  label {
+    padding-left: 24px;
+    color: rgba(0,0,0,0.4);
+  }
 }
