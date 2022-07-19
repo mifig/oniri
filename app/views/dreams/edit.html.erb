@@ -1,4 +1,4 @@
-<div class="container" style="position: relative" data-controller="show-labels sign-dream labels-dream">
+<div class="container" style="position: relative; padding-bottom: 95px;" data-controller="show-labels sign-dream labels-dream">
   <%= simple_form_for [@label, @dream], data: { new_dream_target: "form" } do |f| %>
     <div class="row">
       <div class="col-2 back-btn-div" style="z-index: 9999;">
@@ -28,7 +28,7 @@
           <p class="labels"><%= label.title %></p>
         <% end %>
       </div>
-      <div class="white-round-bg" style="margin-bottom: 95px;">
+      <div class="white-round-bg">
         <div class="d-flex justify-content-between">
           <a class="add-input-btn" data-action="click->sign-dream#showSigns" data-sign-dream-target="signBtn"><%= @dream.significance.sign_type %></a>
           <a class="add-input-btn" data-action="click->labels-dream#showLabels" data-labels-dream-target="labelsBtn">+ label</a>
