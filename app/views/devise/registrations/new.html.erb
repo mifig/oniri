@@ -1,37 +1,52 @@
-<div class="grad-blue-bg">
-  <h2 class="title-center">Sign up</h2>
+<div class="grad-blue-bg" style="position:relative; height: 100vh">
+  <%= link_to "log in", new_user_session_path, class: "white-link-btn bottom-ontop-abs" %>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
+    <div class="container vertical-center">
+      <h2 class="title-center mb-5 blue-text-shadow">sign up</h2>
+      <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :username,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "username" }%>
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :first_name,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "first-name" }%>
-      <%= f.input :last_name,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "last-name" }%>
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
+      <div class="form-inputs">
+        <p class="label-group">user info</p>
+        <div class="profile-tabs" style="padding: 12px">
+          <%= f.input :username,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "username" },
+                      wrapper_html: { class: "input-div" } %>
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" },
+                      wrapper_html: { class: "input-div" } %>
+          <%= f.input :first_name,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "first-name" },
+                      wrapper_html: { class: "input-div" } %>
+          <%= f.input :last_name,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "last-name" },
+                      wrapper_html: { class: "input-div" } %>
+        </div>
+        <p class="label-group">password</p>
+        <div class="profile-tabs" style="padding: 12px">
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" },
+                      wrapper_html: { class: "input-div" } %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password", class: "input-box" },
+                      wrapper_html: { class: "input-div mb-2" } %>
+        </div>
+      </div>
+
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
+    <div class="form-actions text-align-center">
+      <%= f.button :submit, "sign up", class: "login-btn box-white-shadow bottom-pos"  %>
     </div>
   <% end %>
 

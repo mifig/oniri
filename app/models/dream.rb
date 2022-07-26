@@ -2,7 +2,7 @@ class Dream < ApplicationRecord
   include PgSearch::Model
   
   belongs_to :user
-  belongs_to :significance
+  belongs_to :significance, optional: true
   has_many :dream_labels, dependent: :destroy
   has_many :labels, through: :dream_labels
 
@@ -17,4 +17,10 @@ class Dream < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
+
+  def to_a
+    attributes.map do |k,v|
+      v.class == String ? v.gsub(/\s+/, ' ') : v
+    end
+  end
 end

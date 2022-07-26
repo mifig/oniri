@@ -8,7 +8,7 @@
     <%= f.label "from:", class: "label-label", style: "padding-right: 10px; margin-right: 10px; border-right: 1px solid #D5D5D5; width: 60px;" %>
     <%= f.date_field  :begin_date, 
                       as: :date,
-                      class: "datepicker sm-blue",
+                      class: "datepicker sm-blue dreams_begin_date",
                       data: { 
                         filter_date_target: "filterInput",
                         action: "change->filter-date#filter"
@@ -19,7 +19,7 @@
     <%= f.label "to:", class: "label-label", style: "padding-right: 10px; margin-right: 10px; border-right: 1px solid #D5D5D5; width: 60px;" %>
     <%= f.date_field :end_date, 
                       as: :date,
-                      class: "datepicker sm-blue",
+                      class: "datepicker sm-blue dreams_end_date",
                       data: { 
                         filter_date_target: "filterInput",
                         action: "change->filter-date#filter"

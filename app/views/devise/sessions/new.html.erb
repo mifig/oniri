@@ -1,9 +1,9 @@
 <div class="grad-blue-bg" style="position:relative; height: 100vh">
-  <%= link_to "sign-up", new_user_registration_path, class: "white-link-btn bottom-ontop-abs" %>
+  <%= link_to "sign up", new_user_registration_path, class: "white-link-btn bottom-ontop-abs" %>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="container vertical-center">
-      <h2 class="title-center mb-5">log in</h2>
+      <h2 class="title-center mb-5 blue-text-shadow">log in</h2>
         <div class="form-inputs">
           <%= f.input :email,
                       required: false,
@@ -21,7 +21,7 @@
       <%= render "devise/shared/links" %>
     </div>
     <div class="form-actions text-align-center">
-      <%= f.button :submit, "log-in", class: "login-btn box-white-shadow bottom-pos" %>
+      <%= f.button :submit, "log in", class: "login-btn box-white-shadow bottom-pos" %>
     </div>
   <% end %>
 </div>

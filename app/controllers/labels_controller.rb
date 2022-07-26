@@ -20,8 +20,8 @@ class LabelsController < ApplicationController
     @filtered_dreams = @filtered_dreams.sort_by do |dream|
       if params.dig(:search, :column) == "date"
         dream.dream_date
-      else
-        dream.significance
+      # else
+      #   dream.significance
       end
     end
 

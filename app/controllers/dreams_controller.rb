@@ -49,6 +49,7 @@ class DreamsController < ApplicationController
 
   def create
     @dream = Dream.new(dream_params)
+    @dream.significance_id = params.dig(:dream, :significance_id).join if params.dig(:dream, :significance_id)
     @dream.user = current_user
     
     authorize @dream
@@ -61,7 +62,7 @@ class DreamsController < ApplicationController
         end
       end
 
-      redirect_to dream_path(@dream)
+      redirect_to dreams_path
     else
       render :new
     end
@@ -73,6 +74,7 @@ class DreamsController < ApplicationController
 
   def update
     authorize @dream
+    @dream.significance_id = params.dig(:dream, :significance_id).join if params.dig(:dream, :significance_id)
     
     if @dream.update(dream_params)
       destroy_labels = @dream.labels.where.not(id: params[:dream][:label_ids])
@@ -97,7 +99,7 @@ class DreamsController < ApplicationController
     authorize @dream
     
     if @dream.destroy
-      redirect_to :root
+      redirect_to dreams_path
     else
       render :show
     end

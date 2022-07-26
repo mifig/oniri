@@ -33,6 +33,7 @@ a {
   color: white;
   text-shadow: 0px 0px 16px $blue;
   font-size: 60px;
+  width: 100%;
 }
 
 .white-glow {
@@ -273,4 +274,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.blue-text-shadow {
+  text-shadow: 0px 0px 16px $blue;
 }

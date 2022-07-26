@@ -1,0 +1,4 @@
+<%= CSV.generate_line(@dream_headers, col_sep: "|").chomp %>
+<% @dreams.each do |dream| %>
+  <%= CSV.generate_line(dream.to_a, col_sep: "|").chomp %>
+<% end %>

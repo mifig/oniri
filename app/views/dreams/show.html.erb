@@ -11,14 +11,17 @@
   </div>
   <div class="px-4">
     <p class="mb-3 text-align-center" id="dream_title"><%= @dream.title %></p>
+    <% if @dream.significance  %>
+      <p class="white-round-bg white-link-btn mb-4" style="border: <%= @dream.significance ? (@dream.significance.importance == "!!" ? "1.5px solid rgba(200,100,100,0.5)" : "1.5px solid rgba(249,231,17,0.5)") : "" %>"><%= @dream.significance.sign_type %></p>
+    <% end %>
     <p class="text-align-start mb-3 scrolled-text dream-content vh60 small-font bg-none-input" style="white-space: pre-wrap"><%= @dream.content %></p>
-    <p class="white-round-bg white-link-btn"><%= @dream.significance.sign_type %></p>
-    <p class="white-underline">labels:</p>
-    <div class="d-flex labels-position">
-      <% @dream.labels.each do |label| %>
-        <p class="labels"><%= label.title %></p>
-      <% end %>
-    </div>
+    <% if @dream.labels.exists? %>
+      <div class="d-flex labels-position">
+        <% @dream.labels.each do |label| %>
+          <p class="labels"><%= label.title %></p>
+        <% end %>
+      </div>
+    <% end %>
     <div class="d-flex justify-content-center mt">
       <%= link_to "delete dream", dream_path(@dream), method: :delete, style: "margin-bottom: 95px;", class: "delete-red-link", data: { confirm: "Are you sure?" }  %>
     </div>

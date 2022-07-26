@@ -10,7 +10,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "addsign", "removelabels", "signBtn", "signInput" ]
+  static targets = [ "addsign", "removelabels", "signBtn", "signInput", "checkbox" ]
 
   showSigns(event) {
     let sign = this.addsignTarget;
@@ -33,9 +33,18 @@ export default class extends Controller {
     sign.classList.add("visuallyhidden");
     
     this.signInputTarget.querySelectorAll(".form-check").forEach((check) => {
-      if (check.querySelector(".radio_buttons").checked == true) {
+      if (check.querySelector(".check_boxes").checked == true) {
         this.signBtnTarget.innerHTML = check.querySelector("label").innerHTML;
       };
     });
+  }
+
+  checkOneOnly(event) {
+    this.checkboxTargets.forEach((checkbox) => {
+      if(event.target.checked == false)
+        event.target.checked = false
+      else
+        checkbox.checked = (checkbox == event.target)
+    })
   }
 }

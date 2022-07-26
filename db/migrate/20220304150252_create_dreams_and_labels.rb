@@ -4,7 +4,7 @@ class CreateDreamsAndLabels < ActiveRecord::Migration[6.1]
       t.string :title
       t.string :content
       t.references :user, null: false, foreign_key: true
-      t.references :significance, null: false, foreign_key: true
+      t.references :significance, null: true, foreign_key: true
       t.datetime :dream_date, default: Time.now
 
       t.timestamps

@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2022_03_11_120007) do
     t.string "title"
     t.string "content"
     t.bigint "user_id", null: false
-    t.bigint "significance_id", null: false
-    t.datetime "dream_date", default: "2022-03-10 13:01:22"
+    t.bigint "significance_id"
+    t.datetime "dream_date", default: "2022-07-23 11:06:33"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["significance_id"], name: "index_dreams_on_significance_id"

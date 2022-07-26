@@ -6,7 +6,7 @@ export default class extends Controller {
   showLabels() {
     this.labelcontainerTarget.innerHTML = "";
     
-    document.querySelectorAll(".check_boxes").forEach( check => {
+    document.querySelectorAll(".label-show").forEach( check => {
       if (check.checked) {
         let label = check.parentElement.innerText;
         this.labelcontainerTarget.insertAdjacentHTML("beforeend",`<p class="labels">${label}</p>`)

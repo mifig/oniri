@@ -19,7 +19,13 @@ import "bootstrap"
 // Internal imports:
 import { initFlatpickr } from '../plugins/init_flatpickr';
 
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
-  initFlatpickr();
+  if(document.querySelector(".edit-dream-date") != null) {
+    let dreamDate = document.querySelector(".edit-dream-date").value;
+    initFlatpickr(dreamDate);
+  } else {
+    initFlatpickr();
+  };
 });

@@ -37,5 +37,11 @@
         <% end %>
       </div>
     </div>
+
+    <div class="mt-4 text-align-center">
+      <%= link_to export_path(format: :csv), class: "white-font export-btn" do %>
+        export dreams <i class="fas fa-cloud-download-alt"></i>
+      <% end %>
+    </div>
   </div>
 </div>
