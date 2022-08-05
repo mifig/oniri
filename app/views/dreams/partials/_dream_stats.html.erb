@@ -2,17 +2,18 @@
   <div class="white-round-bg shadow-box-black mb-3 mx-2" style="padding: 12px 20px 20px 20px">
     <h2 class="white-font h2-gray-title pb-1 mb-3 add-input-btn-clicked">dreams timeline</h2>
     <%= line_chart  @dreams.group_by_month(:dream_date).count(:dream_date), 
-                    colors: ["#51C4D3"],
+                    colors: ["#FFFFFF"],
                     label: "# dreams",
                     empty: "no dreams found",
-                    height: "180px"
+                    height: "180px",
+                    points: false
     %>
   </div>
 
   <div class="white-round-bg shadow-box-black mb-3 mx-2" style="padding: 12px 20px 20px 20px">
     <h2 class="white-font h2-gray-title pb-1 mb-3 add-input-btn-clicked">dream categories</h2>
     <%= pie_chart @dreams_by_lable, 
-                  # colors: @label_colors,
+                  colors: ["#FFFFFF","#B7FDFE", "#FDE74C", "#918B76", "#13262F", "#C73E1D", "#998DA0"],
                   legend: "right",
                   label: "# dreams",
                   donut: true,
@@ -28,7 +29,7 @@
     <div class="white-round-bg shadow-box-black mx-2" style="padding: 12px 20px 20px 20px">
       <h2 class="white-font h2-gray-title pb-1 mb-3 add-input-btn-clicked">dreams significance</h2>
       <%= column_chart  @dreams_by_significance, 
-                      colors: ["rgba(249,231,17,0.5)", "#C82B1B", "#51C4D3"],
+                      colors: ["#FDE74C", "#998DA0", "#FFFFFF"],
                       label: "# dreams",
                       empty: "no dreams found",
                       height: "180px"

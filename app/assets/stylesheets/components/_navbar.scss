@@ -26,4 +26,13 @@
     color: white;
     font-size: 30px;
   }
+
+  i:hover {
+    color: rgba(255,255,255,0.6);
+  }
+
+  .add-btn:hover, .save-btn:hover {
+    color: $blue;
+    background: rgba(255,255,255,0.6);
+  }
 }

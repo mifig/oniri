@@ -104,8 +104,8 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  background: var(--bs-blue);
-  padding: 35px 0px 10px 0px;
+  background: $blue;
+  padding: 35px 0px 15px 0px;
 }
 
 .title-center {
@@ -257,8 +257,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .border-bottom-white {
   border: none;
   border-bottom: 2px solid white;
-  border-radius: 0px 0px 16px 16px;
-  box-shadow: 0px 10px 10px -10px white;
 }
 
 .shadow-box-black {
@@ -278,4 +276,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .blue-text-shadow {
   text-shadow: 0px 0px 16px $blue;
+}
+
+.w-60 {
+  width: 60%;
+}
+
+.blue-top-pad {
+  padding-top: 10px;
+}
+
+.container-center {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  width: 80vw;
 }

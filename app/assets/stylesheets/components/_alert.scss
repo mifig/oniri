@@ -1,6 +1,17 @@
 .alert {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  left: 50%;
+  bottom: 95px;
+  width: 95vw;
+  transform: translateX(-50%);
   z-index: 1000;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
+  border: none;
+  color: $blue;
+  padding: 14px 18px;
+}
+
+.alert-danger {
+  display: none;
 }

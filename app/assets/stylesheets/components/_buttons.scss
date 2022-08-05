@@ -146,3 +146,10 @@
   text-decoration: underline;
   font-size: 18px;
 }
+
+.year-btn {
+  background: $blue; 
+  width: 100%; 
+  position: sticky;
+  box-shadow: 10px 0px 0px $blue, -10px 0px 0px $blue;
+}

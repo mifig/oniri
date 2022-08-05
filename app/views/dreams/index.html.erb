@@ -4,15 +4,24 @@
 <div class="container" data-controller="toggle-dreams" style="min-height: 100vh; padding-bottom: 100px; margin-top: 90px">
   <div>
     <% @years.each do |year| %>
-      <button class="border-bottom-white title-center mb-0" id="<%= year %>" data-action="click->toggle-dreams#toggleDreams" style="background: var(--bs-blue); width: 100%; position: sticky;
-      top: 83px;"><%= year %></button>
+      <button class="border-bottom-white title-center mb-0 year-btn blue-top-pad" 
+              id="<%= year %>" 
+              data-action="click->toggle-dreams#toggleDreams" 
+              data-toggle-dreams-target="year" 
+              style="top: <%= @years.find_index(year) == 0 ? 88 : 88 + (@years.find_index(year) * 60) %>px;">
+                <%= year %>
+      </button>
       <div id="year-<%= year %>">
         <% @months.each do |month| %>
           <% if month.split[1] == "#{year}" %>
             <button class="small white-font mt-3 mb-1" id="<%= year %>-<%= month.split[0] %>" data-action="click->toggle-dreams#toggleDreams" style="border: none;background: none; width: 100%;"><i class="fas fa-caret-down"></i> <%= month.split[0] %></button>
           <% end %>
 
-          <%= render "dreams/partials/dream_link", month: month, year: year %>
+          <% @dreams.each do |dream| %>
+            <% if Date::MONTHNAMES[dream.dream_date.month] == month.split[0] && dream.dream_date.year == year && dream.dream_date.year == month.split[1].to_i %>
+              <%= render "dreams/partials/dream_link", month: month, year: year, dream: dream %>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     <% end %>

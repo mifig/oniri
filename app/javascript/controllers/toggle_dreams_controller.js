@@ -10,7 +10,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "button" ]
+  static targets = [ "button", "year" ]
   
   toggleDreams(event) {
     const btnId = event.currentTarget.id

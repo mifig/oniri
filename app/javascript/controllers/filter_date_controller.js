@@ -14,12 +14,13 @@ export default class extends Controller {
   
   filter() {
     if(this.filterInputTargets[0].value != '' && this.filterInputTargets[1].value != '') {
-      const url = `${this.formTarget.action}?search[begin_date]='${this.filterInputTargets[0].value}'&search[end_date]='${this.filterInputTargets[1].value}'`
-      // console.log(url)
+      let beginDate = new Date(Date.parse(this.filterInputTargets[0].value)).toUTCString();
+      let endDate = new Date(Date.parse(this.filterInputTargets[1].value)).toUTCString();
+      const url = `${this.formTarget.action}?search[begin_date]='${beginDate}'&search[end_date]='${endDate}'`
       fetch(url, { headers: { 'Accept': 'text/plain' } })
         .then(response => response.text())
         .then((data) => {
-          // console.log(this.dreamstatsTarget)
+          console.log(this.dreamstatsTarget)
           this.dreamstatsTarget.outerHTML = data
           
           // Rerun (=recreate) Chartkick scripts, since outerHTML substitution doesn't

@@ -280,3 +280,11 @@ textarea.form-control {
     color: rgba(0,0,0,0.4);
   }
 }
+
+.datepicker:focus {
+  color: white;
+}
+
+.dreams_begin_date:focus, .dreams_end_date:focus {
+  color: $blue;
+}
