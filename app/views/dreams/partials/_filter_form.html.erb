@@ -1,0 +1,29 @@
+<%= form_for  :search, 
+              url: dreams_path, 
+              method: :get, 
+              data: { 
+                new_dream_target: "form",
+                filter_labels_target: "form" 
+              } do |f| %>
+  <div class="d-flex justify-content-between align-items-center white-filter-form">
+    <%= f.label "label:", class: "label-label" %>
+    <div class="label-filter">
+      <%= f.select  :title, 
+                    options_for_select(current_user.labels, params.dig(:search, :title)),
+                    {},
+                    {
+                      data: { 
+                        filter_labels_target: "filterInput",
+                        action: "change->filter-labels#filter"
+                      }, 
+                      class: "drop-select" 
+                    } do %>
+        <%= content_tag(:option, "all", value: "all") %>
+        <% current_user.labels.each do |label| %>
+          <%= content_tag(:option, label.title, value: label.title) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <%= f.button "submit", class: "d-none" %>
+<% end %>

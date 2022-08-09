@@ -4,10 +4,29 @@ class DreamsController < ApplicationController
   after_action :verify_authorized, except: [:index, :activity], unless: :skip_pundit?
   
   def index
-    @dreams = policy_scope(Dream.where(user: current_user)).order(:dream_date)
+    @filtered_labels = policy_scope(current_user.labels)
     
-    @months = @dreams.select(:dream_date).map { |dream| "#{Date::MONTHNAMES[dream.dream_date.month]} #{dream.dream_date.year}" }.uniq
-    @years = @dreams.select(:dream_date).map { |dream| dream.dream_date.year }.uniq
+    if params.dig(:search, :title) == "all" || !params.dig(:search, :title).present?
+      @filtered_dreams = policy_scope(Dream.where(user: current_user)).order(:dream_date)
+    else
+      filter_by_label_title
+      filtered_dreams_id = DreamLabel.where(labels: @filtered_labels).distinct.pluck("dream_id")
+      @filtered_dreams = Dream.find(filtered_dreams_id).sort_by { |dream| dream.dream_date }
+    end
+    
+    @months = @filtered_dreams.map { |dream| "#{Date::MONTHNAMES[dream.dream_date.month]} #{dream.dream_date.year}" }.uniq
+    @years = @filtered_dreams.map { |dream| dream.dream_date.year }.uniq
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render  partial: 'dreams/partials/dream_link.html', 
+                            locals: { 
+                              filtered_dreams: @filtered_dreams,
+                              months: @months,
+                              years: @years 
+                            } 
+                  }
+    end
   end
 
   def activity
@@ -151,6 +170,14 @@ class DreamsController < ApplicationController
           .select("significances.sign_type, dreams.id")
           .group("significances.sign_type")
           .count("significances.sign_type")
+    end
+  end
+
+  def filter_by_label_title
+    if params.dig(:search)[:title] == "all"
+      @filtered_labels = current_user.labels
+    else
+      @filtered_labels = Label.where(title: params.dig(:search)[:title], user_id: current_user.id)
     end
   end
 end

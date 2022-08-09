@@ -10,14 +10,15 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "form", "dreamslist", "filterInput", "filterColInput", "filterOrderInput" ]
+  static targets = [ "form", "dreamslist", "filterInput" ]
   
   filter() {
-    const url = `${this.formTarget.action}?search[title]=${this.filterInputTarget.value}&search[column]=${this.filterColInputTarget.value}&search[order]=${this.filterOrderInputTarget.value}`
+    console.log("hello");
+    const url = `${this.formTarget.action}?search[title]=${this.filterInputTarget.value}`
     fetch(url, { headers: { 'Accept': 'text/plain' } })
       .then(response => response.text())
       .then((data) => {
-        this.dreamslistTarget.outerHTML = data;
+        this.dreamslistTarget.innerHTML = data;
       })
   }
 }
